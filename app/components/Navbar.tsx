@@ -29,15 +29,12 @@ export default function Navbar() {
 
     const currentNav = navRefs.current[index];
     if (currentNav) {
-      const parentLeft = currentNav.parentElement?.getBoundingClientRect().left || 0;
-      const elementLeft = currentNav.getBoundingClientRect().left;
-      const relativeLeft = elementLeft - parentLeft;
-
+      const parentLeft = currentNav.offsetLeft;
+      
       setSliderStyle({
         opacity: 1,
-        transform: `translateX(${relativeLeft}px)`,
-        width: `${currentNav.offsetWidth}px`,
-        transition: 'all 0.3s ease'
+        transform: `translateX(${parentLeft}px)`,
+        width: `${currentNav.offsetWidth}px`
       });
     }
   };
@@ -56,10 +53,10 @@ export default function Navbar() {
             <div className="bg-white/10 backdrop-blur-md rounded-full px-4 py-1 relative">
               {/* Slider */}
               <div 
-                className="absolute h-full bg-white/20 top-0 rounded-full -z-10"
+                className="absolute h-[calc(100%-16px)] bg-white/20 top-2 rounded-full -z-10 transition-all duration-300 ease-out"
                 style={sliderStyle}
               />
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 relative">
                 {navItems.map((item, index) => (
                   <Link
                     key={item.name}
