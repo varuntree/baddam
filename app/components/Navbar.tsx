@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 const navItems = [
@@ -13,6 +13,34 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [sliderStyle, setSliderStyle] = useState({});
+  const navRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  const updateSliderPosition = (index: number) => {
+    if (index === -1) {
+      setSliderStyle({
+        opacity: 0,
+        transform: 'translateX(0)',
+        transition: 'all 0.3s ease'
+      });
+      return;
+    }
+
+    const currentNav = navRefs.current[index];
+    if (currentNav) {
+      const parentLeft = currentNav.parentElement?.getBoundingClientRect().left || 0;
+      const elementLeft = currentNav.getBoundingClientRect().left;
+      const relativeLeft = elementLeft - parentLeft;
+
+      setSliderStyle({
+        opacity: 1,
+        transform: `translateX(${relativeLeft}px)`,
+        width: `${currentNav.offsetWidth}px`,
+        transition: 'all 0.3s ease'
+      });
+    }
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-black/10 backdrop-blur-sm">
@@ -25,13 +53,21 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="bg-white/10 backdrop-blur-md rounded-full px-4 py-1">
+            <div className="bg-white/10 backdrop-blur-md rounded-full px-4 py-1 relative">
+              {/* Slider */}
+              <div 
+                className="absolute h-full bg-white/20 top-0 rounded-full -z-10"
+                style={sliderStyle}
+              />
               <div className="flex space-x-4">
-                {navItems.map((item) => (
+                {navItems.map((item, index) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                    ref={el => navRefs.current[index] = el}
+                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium relative"
+                    onMouseEnter={() => updateSliderPosition(index)}
+                    onMouseLeave={() => updateSliderPosition(-1)}
                   >
                     {item.name}
                   </Link>
