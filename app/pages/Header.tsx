@@ -10,6 +10,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
+    const imageContainerRef = useRef(null);
+    
     return (
         <div className="relative h-screen w-full">
             <video 
