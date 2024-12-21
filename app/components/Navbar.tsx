@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Company Name */}
           <div className="flex-shrink-0">
-            <span className="text-white font-bold text-xl">BADDAM AI</span>
+            <span className="text-white font-bold text-xl">Test It</span>
           </div>
 
           {/* Desktop Navigation */}

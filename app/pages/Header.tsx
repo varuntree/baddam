@@ -14,7 +14,7 @@ export default function Header() {
             >
                 <source src="/headerVideo.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-lg"></div>
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-lg"></div>
             <Navbar />
             <div className="relative z-10 container mx-auto px-4">
                 {/* Add your header content here */}
