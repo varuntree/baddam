@@ -1,7 +1,13 @@
 
-import React from 'react';
+"use client";
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import CornerEdgeCard from '../components/CornerEdgeCard';
+import Image from 'next/image';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
     return (
@@ -29,7 +35,38 @@ export default function Header() {
                         Learn More
                     </button>
                 </div>
+                <div className="relative w-[70%] mx-auto mt-12" ref={imageContainerRef}>
+                    <Image 
+                        src="/header-automation.png"
+                        alt="Automation"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
+                        priority
+                    />
+                </div>
             </div>
         </div>
     );
+
+    const imageContainerRef = useRef(null);
+
+    useEffect(() => {
+        if (imageContainerRef.current) {
+            gsap.set(imageContainerRef.current, { perspective: 1000 });
+            
+            gsap.to(imageContainerRef.current, {
+                scrollTrigger: {
+                    trigger: imageContainerRef.current,
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: true,
+                },
+                rotateX: 30,
+                scale: 0.9,
+                yPercent: -5,
+                ease: "none",
+            });
+        }
+    }, []);
 }
