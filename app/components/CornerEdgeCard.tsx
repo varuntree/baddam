@@ -6,11 +6,10 @@ import gsap from 'gsap';
 import Image from 'next/image';
 
 interface CornerEdgeCardProps {
-  text: string;
-  highlightedWords: string[];
+  highlightedWords?: string[];
 }
 
-export default function CornerEdgeCard({ text, highlightedWords }: CornerEdgeCardProps) {
+export default function CornerEdgeCard({ highlightedWords = ["AI-Driven"] }: CornerEdgeCardProps) {
   const topLeftRef = useRef<HTMLDivElement>(null);
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
@@ -34,10 +33,10 @@ export default function CornerEdgeCard({ text, highlightedWords }: CornerEdgeCar
 
   }, []);
 
-  const renderText = () => {
+  const renderText = (text: string, highlightWords: string[]) => {
     const words = text.split(' ');
     return words.map((word, index) => {
-      const isPrimary = highlightedWords.includes(word);
+      const isPrimary = highlightWords.includes(word);
       return (
         <span 
           key={index} 
@@ -50,15 +49,28 @@ export default function CornerEdgeCard({ text, highlightedWords }: CornerEdgeCar
   };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-12 rounded-lg">
+    <div className="relative w-full max-w-3xl mx-auto p-12 bg-black/30 backdrop-blur-sm rounded-lg">
       <div ref={topLeftRef} className="absolute top-0 left-0 -translate-x-[200%] -translate-y-[200%] opacity-0">
         <Image src="/top-left.svg" alt="Top Left Corner" width={40} height={40} />
       </div>
       <div ref={bottomRightRef} className="absolute bottom-0 right-0 translate-x-[200%] translate-y-[200%] opacity-0">
         <Image src="/bottom-right.svg" alt="Bottom Right Corner" width={40} height={40} />
       </div>
-      <div className="text-2xl font-medium text-center">
-        {renderText()}
+      <div className="space-y-6 text-center">
+        <h1 className="text-3xl font-bold">
+          {renderText("Transforming Businesses with AI-Driven Automation.", highlightedWords)}
+        </h1>
+        <p className="text-xl text-white/90">
+          Empowering you to streamline workflows, enhance customer engagement, and drive measurable growth.
+        </p>
+        <div className="flex justify-center gap-4 mt-8">
+          <button className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            Get Started
+          </button>
+          <button className="px-6 py-3 border-2 border-white text-white rounded-lg hover:bg-white/10 transition-colors">
+            Learn More
+          </button>
+        </div>
       </div>
     </div>
   );
