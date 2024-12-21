@@ -9,7 +9,7 @@ interface CornerEdgeCardProps {
   highlightedWords?: string[];
 }
 
-export default function CornerEdgeCard({ highlightedWords = ["Transforming", "AI-Driven", "Automation"] }: CornerEdgeCardProps) {
+export default function CornerEdgeCard({ highlightedWords = ["Businesses", "Automation"] }: CornerEdgeCardProps) {
   const topLeftRef = useRef<HTMLDivElement>(null);
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
