@@ -20,8 +20,7 @@ export default function Header() {
             <Navbar />
             <div className="relative z-10 container mx-auto px-4 flex items-center justify-center min-h-screen">
                 <CornerEdgeCard 
-                    text="Welcome to Our Digital World" 
-                    highlightedWords={["Digital", "World"]} 
+                    highlightedWords={["Businesses", "Automation"]} 
                 />
             </div>
         </div>
