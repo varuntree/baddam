@@ -9,7 +9,7 @@ interface CornerEdgeCardProps {
   highlightedWords?: string[];
 }
 
-export default function CornerEdgeCard({ highlightedWords = ["AI-Driven"] }: CornerEdgeCardProps) {
+export default function CornerEdgeCard({ highlightedWords = ["Transforming", "AI-Driven", "Automation"] }: CornerEdgeCardProps) {
   const topLeftRef = useRef<HTMLDivElement>(null);
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
@@ -64,10 +64,10 @@ export default function CornerEdgeCard({ highlightedWords = ["AI-Driven"] }: Cor
           Empowering you to streamline workflows, enhance customer engagement, and drive measurable growth.
         </p>
         <div className="flex justify-center gap-4 mt-8">
-          <button className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+          <button className="px-6 py-3 bg-white text-black rounded-lg hover:bg-white/90 transition-colors">
             Get Started
           </button>
-          <button className="px-6 py-3 border-2 border-white text-white rounded-lg hover:bg-white/10 transition-colors">
+          <button className="px-6 py-3 border-2 border-primary text-primary rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
             Learn More
           </button>
         </div>
