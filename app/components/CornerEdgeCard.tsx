@@ -52,14 +52,6 @@ export default function CornerEdgeCard({ highlightedWords = ["Businesses", "Auto
           Empowering you to streamline workflows, enhance customer engagement, and drive measurable growth.
         </p>
       </div>
-      <div className="flex justify-center gap-4 mt-8">
-        <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-white/90 transition-colors">
-          Get Started
-        </button>
-        <button className="px-6 py-3 border-2 border-primary text-white rounded-3xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
-          Learn More
-        </button>
-      </div>
     </div>
   );
 }
