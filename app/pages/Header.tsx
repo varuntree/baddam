@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
+
 export default function Header() {
     return (
         <div className="relative h-screen w-full">
@@ -18,6 +19,7 @@ export default function Header() {
             <Navbar />
             <div className="relative z-10 container mx-auto px-4">
                 {/* Add your header content here */}
+                
             </div>
         </div>
     );
