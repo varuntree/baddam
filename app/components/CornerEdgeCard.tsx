@@ -50,7 +50,7 @@ export default function CornerEdgeCard({ text, highlightedWords }: CornerEdgeCar
   };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-12 bg-black/30 backdrop-blur-sm rounded-lg">
+    <div className="relative w-full max-w-2xl mx-auto p-12 rounded-lg">
       <div ref={topLeftRef} className="absolute top-0 left-0 -translate-x-[200%] -translate-y-[200%] opacity-0">
         <Image src="/top-left.svg" alt="Top Left Corner" width={40} height={40} />
       </div>
