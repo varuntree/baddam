@@ -132,7 +132,7 @@ export default function HowWeWork() {
           </div>
 
           {/* Navigation + Book Now Buttons */}
-          <div className="flex flex-wrap justify-center items-center gap-3 mt-8">
+          <div className="flex flex-wrap justify-center items-center gap-3 mt-8 md:mt-8 mt-[400px] relative z-10">
             <button
               onClick={slidePrev}
               className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm disabled:opacity-50"
