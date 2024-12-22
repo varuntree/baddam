@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -35,14 +36,28 @@ export default function Features() {
             enterprise.
           </p>
         </div>
-        <div className="flex flex-col lg:flex-row gap-8">
+        
+        {/* First Row */}
+        <div className="flex flex-col lg:flex-row gap-8 mb-8">
           <div className="lg:w-1/4">
-            <h3 className="text-3xl font-bold text-black mb-4">Solutions</h3>
+            <h3 className="text-3xl font-bold text-black mb-4 lg:mb-0">Solutions</h3>
           </div>
-          <div className="lg:w-3/4 flex flex-col md:flex-row gap-8 flex-wrap lg:flex-nowrap">
-            {features.map((feature, index) => (
+          <div className="lg:w-3/4">
+            <FeatureCard
+              key={0}
+              title={features[0].title}
+              description={features[0].description}
+              imageSrc={features[0].imageSrc}
+            />
+          </div>
+        </div>
+
+        {/* Second Row */}
+        <div className="lg:ml-[25%] mt-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {features.slice(1).map((feature, index) => (
               <FeatureCard
-                key={index}
+                key={index + 1}
                 title={feature.title}
                 description={feature.description}
                 imageSrc={feature.imageSrc}
