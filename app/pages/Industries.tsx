@@ -44,7 +44,7 @@ export default function Industries() {
           Industries We Serve
         </h2>
         
-        <div className="w-full md:w-[30%] backdrop-blur-md bg-white/10 rounded-2xl p-6 border border-white/20 min-h-[calc(100vh-12rem)]">
+        <div className="fixed left-0 top-0 w-full md:w-[30%] backdrop-blur-md bg-white/10 p-6 border-r border-white/20 h-screen">
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
