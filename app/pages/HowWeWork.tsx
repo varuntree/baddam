@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import StepCard from "../components/StepCard";
 
 export default function HowWeWork() {
