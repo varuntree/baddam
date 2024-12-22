@@ -20,25 +20,6 @@ export default function HowWeWork() {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % steps.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + steps.length) % steps.length);
-  };
-
-  const getOrderedSteps = () => {
-    const result = [];
-    for (let i = 0; i < steps.length; i++) {
-      const index = (currentIndex - 1 + i + steps.length) % steps.length;
-      result.push(steps[index]);
-    }
-    return result;
-  };
-
   return (
     <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
@@ -52,16 +33,17 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider">
-            {getOrderedSteps().map((step, index) => (
-              <div 
-                key={index} 
-                className={`snap-center shrink-0 w-[90vw] md:w-[600px] transition-all duration-500 ${
-                  index === 1 ? 'scale-105 opacity-100' : 'scale-90 opacity-70'
-                }`}
-              >
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider" ref={(el) => {
+            if (el) {
+              setTimeout(() => {
+                el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
+              }, 100);
+            }
+          }}>
+            {steps.map((step, index) => (
+              <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
-                  stepNumber={(currentIndex + index) % steps.length + 1}
+                  stepNumber={index + 1}
                   title={step.title}
                   description={step.description}
                 />
@@ -70,13 +52,13 @@ export default function HowWeWork() {
           </div>
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={handlePrev}
+              onClick={() => document.getElementById('slider')?.scrollBy({ left: -600, behavior: 'smooth' })}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               ←
             </button>
             <button 
-              onClick={handleNext}
+              onClick={() => document.getElementById('slider')?.scrollBy({ left: 600, behavior: 'smooth' })}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
