@@ -28,14 +28,20 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 flex flex-col justify-between p-6">
-          <h3 className="text-xl font-semibold text-white z-10">{title}</h3>
+        <div className="absolute inset-0 flex flex-col p-6">
+          <h3 
+            className={`text-xl font-semibold text-white z-10 transition-opacity duration-500 ${
+              isHovered ? 'opacity-0' : 'opacity-100'
+            }`}
+          >
+            {title}
+          </h3>
           <div
-            className={`bg-black/60 backdrop-blur-sm transition-opacity duration-500 rounded-xl p-4 ${
+            className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-500 flex items-center justify-center p-6 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <p className="text-gray-100">{description}</p>
+            <p className="text-gray-100 text-center">{description}</p>
           </div>
         </div>
       </div>
