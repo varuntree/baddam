@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -95,12 +94,12 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative overflow-hidden">
-          <div className="relative h-[500px]">
+          <div className="relative h-[400px] md:h-[500px]">
             {steps.map((step, index) => (
               <div
                 key={index}
                 ref={el => { cardRefs.current[index] = el }}
-                className="absolute top-0 left-0 w-full"
+                className="absolute top-0 left-0 w-full px-2 md:px-0"
               >
                 <StepCard
                   stepNumber={index + 1}
