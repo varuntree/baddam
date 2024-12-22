@@ -113,7 +113,7 @@ export default function HowWeWork() {
         {/* Slides Section */}
         <div className="relative overflow-hidden">
           {/* Use min-h instead of a fixed height so content can grow as needed */}
-          <div className="relative min-h-[500px]">
+          <div className="relative min-h-[400px]">
             {steps.map((step, index) => (
               <div
                 key={index}
