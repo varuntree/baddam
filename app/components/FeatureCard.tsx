@@ -15,9 +15,7 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
 
   return (
     <div
-      className={`relative bg-neutral-900 rounded-3xl overflow-hidden transition-all duration-500 transform cursor-pointer w-full md:flex-1 ${
-        isHovered ? 'scale-105 z-10' : ''
-      }`}
+      className="relative bg-neutral-900 rounded-3xl overflow-hidden transition-all duration-500 transform cursor-pointer w-full md:flex-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -28,16 +26,16 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
           fill
           className="object-cover"
         />
-        <div className={`absolute inset-0 flex flex-col justify-center p-6 transition-all duration-500 ${
-          isHovered ? 'bg-black/60 backdrop-blur-sm' : 'bg-black/40 backdrop-blur-[2px]'
-        }`}>
-          <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
-          <p className={`text-gray-100 transition-opacity duration-500 ${
+        <div
+          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 flex flex-col justify-end p-6 ${
             isHovered ? 'opacity-100' : 'opacity-0'
-          }`}>
-            {description}
-          </p>
+          }`}
+        >
+          <p className="text-gray-100">{description}</p>
         </div>
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
       </div>
     </div>
   );
