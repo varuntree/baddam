@@ -110,17 +110,17 @@ export default function HowWeWork() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center gap-4 mt-8">
+          <div className="flex justify-center gap-2 mt-4">
             <button 
               onClick={slidePrev}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm disabled:opacity-50"
+              className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm disabled:opacity-50"
               disabled={currentStep === 0}
             >
               ←
             </button>
             <button 
               onClick={slideNext}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm disabled:opacity-50"
+              className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm disabled:opacity-50"
               disabled={currentStep === steps.length - 1}
             >
               →
