@@ -1,7 +1,8 @@
 
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
 
 const teamMembers = [
   {
@@ -53,6 +54,36 @@ const coreValues = [
 
 export default function AboutUs() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin();
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const moveX = clientX - window.innerWidth / 2;
+      const moveY = clientY - window.innerHeight / 2;
+      const offset = 15;
+
+      cardsRef.current.forEach((card) => {
+        if (card) {
+          gsap.to(card, {
+            duration: 0.5,
+            x: moveX / offset,
+            y: moveY / offset,
+            rotation: moveX / (offset * 4),
+            ease: "power2.out"
+          });
+        }
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,14 +109,20 @@ export default function AboutUs() {
 
         {/* Mission & Vision Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-neutral-900 p-8 rounded-3xl">
+          <div 
+            ref={el => cardsRef.current[0] = el}
+            className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
+          >
             <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
             <p className="text-white/70">
               We aim to empower businesses by transforming their operations through AI innovation,
               ensuring they are equipped for the challenges of tomorrow.
             </p>
           </div>
-          <div className="bg-neutral-900 p-8 rounded-3xl">
+          <div 
+            ref={el => cardsRef.current[1] = el}
+            className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
+          >
             <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
             <p className="text-white/70">
               To revolutionize industries by making AI an integral, accessible, and impactful
@@ -99,7 +136,11 @@ export default function AboutUs() {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value, index) => (
-              <div key={index} className="bg-neutral-900 p-8 rounded-3xl">
+              <div 
+                key={index}
+                ref={el => cardsRef.current[index + 2] = el}
+                className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
+              >
                 <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
                 <p className="text-white/70">{value.description}</p>
               </div>
@@ -108,7 +149,10 @@ export default function AboutUs() {
         </div>
 
         {/* Story Section */}
-        <div className="mb-16 bg-neutral-900 p-8 rounded-3xl">
+        <div 
+          ref={el => cardsRef.current[5] = el}
+          className="mb-16 bg-neutral-900 p-8 rounded-3xl transform-gpu"
+        >
           <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Story</h2>
           <p className="text-white/70 text-center max-w-4xl mx-auto">
             Founded with the belief that AI can empower businesses of all sizes, we've grown
@@ -129,14 +173,13 @@ export default function AboutUs() {
                 width: `${teamMembers.length * 400}px`
               }}
             >
-              {/* Duplicate the array twice for seamless infinite scroll */}
               {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-[350px] bg-neutral-900 rounded-3xl overflow-hidden"
+                  ref={el => cardsRef.current[index + 6] = el}
+                  className="flex-shrink-0 w-[350px] bg-neutral-900 rounded-3xl overflow-hidden transform-gpu"
                 >
                   <div className="h-[400px] relative bg-neutral-800">
-                    {/* Placeholder for image */}
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
                   </div>
                   <div className="p-6">
