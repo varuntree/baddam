@@ -23,11 +23,11 @@ export default function HowWeWork() {
   return (
     <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
-        <div className="mb-16">
-          <h1 className="text-5xl font-bold mb-4 text-white">
-            AI that works for <br /> everyone.
+        <div className="mb-16 flex items-center justify-between gap-8">
+          <h1 className="text-5xl font-bold text-white w-1/2">
+            AI that works for everyone.
           </h1>
-          <p className="text-xl text-white/70">
+          <p className="text-xl text-white/70 w-1/2">
             Delivering AI that works for everyone, from individuals to large enterprises.
           </p>
         </div>
