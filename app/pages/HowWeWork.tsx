@@ -42,7 +42,12 @@ export default function HowWeWork() {
         gsap.fromTo(
           nextCard,
           { x: "100%", opacity: 0 },
-          { x: "0%", opacity: 1, duration: 0.7, ease: "power2.out" }
+          {
+            x: "0%",
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out",
+          }
         );
       }
 
@@ -66,7 +71,12 @@ export default function HowWeWork() {
         gsap.fromTo(
           prevCard,
           { x: "-100%", opacity: 0 },
-          { x: "0%", opacity: 1, duration: 0.7, ease: "power2.out" }
+          {
+            x: "0%",
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out",
+          }
         );
       }
 
@@ -102,7 +112,8 @@ export default function HowWeWork() {
 
         {/* Slides Section */}
         <div className="relative overflow-hidden">
-          <div className="relative h-[400px] md:h-[500px]">
+          {/* Use min-h instead of a fixed height so content can grow as needed */}
+          <div className="relative min-h-[500px]">
             {steps.map((step, index) => (
               <div
                 key={index}
@@ -120,8 +131,8 @@ export default function HowWeWork() {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center gap-2 mt-6">
+          {/* Navigation + Book Now Buttons */}
+          <div className="flex flex-wrap justify-center items-center gap-3 mt-8">
             <button
               onClick={slidePrev}
               className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm disabled:opacity-50"
@@ -135,6 +146,22 @@ export default function HowWeWork() {
               disabled={currentStep === steps.length - 1}
             >
               →
+            </button>
+
+            {/* Book Now Button */}
+            <button
+              className="
+                px-6 py-2 
+                rounded-full 
+                border border-white/10 
+                text-white 
+                bg-transparent 
+                hover:bg-primary 
+                hover:text-white 
+                transition-colors
+              "
+            >
+              Book Now
             </button>
           </div>
         </div>
