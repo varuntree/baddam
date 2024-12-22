@@ -1,10 +1,14 @@
 
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StepCard from "../components/StepCard";
+import gsap from "gsap";
 
 export default function HowWeWork() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
   const steps = [
     {
       title: "Find answers & generate content you can trust",
@@ -20,6 +24,28 @@ export default function HowWeWork() {
     },
   ];
 
+  const slideNext = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep(prev => prev + 1);
+      gsap.to(sliderRef.current, {
+        x: `-${(currentStep + 1) * 100}%`,
+        duration: 0.7,
+        ease: "power2.out"
+      });
+    }
+  };
+
+  const slidePrev = () => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+      gsap.to(sliderRef.current, {
+        x: `-${(currentStep - 1) * 100}%`,
+        duration: 0.7,
+        ease: "power2.out"
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
@@ -32,10 +58,14 @@ export default function HowWeWork() {
           </p>
         </div>
         
-        <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory transition-transform duration-700 ease-out" id="slider">
+        <div className="relative overflow-hidden">
+          <div 
+            ref={sliderRef}
+            className="flex w-full transition-transform duration-700 ease-out"
+            style={{ width: `${steps.length * 100}%` }}
+          >
             {steps.map((step, index) => (
-              <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+              <div key={index} className="w-full px-4">
                 <StepCard
                   stepNumber={index + 1}
                   title={step.title}
@@ -46,14 +76,16 @@ export default function HowWeWork() {
           </div>
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy(-600, 0)}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+              onClick={slidePrev}
+              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm disabled:opacity-50"
+              disabled={currentStep === 0}
             >
               ←
             </button>
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy(600, 0)}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+              onClick={slideNext}
+              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm disabled:opacity-50"
+              disabled={currentStep === steps.length - 1}
             >
               →
             </button>
