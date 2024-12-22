@@ -99,7 +99,7 @@ export default function HowWeWork() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                ref={el => cardRefs.current[index] = el}
+                ref={el => { cardRefs.current[index] = el }}
                 className="absolute top-0 left-0 w-full"
               >
                 <StepCard
