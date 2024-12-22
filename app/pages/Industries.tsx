@@ -77,11 +77,15 @@ export default function Industries() {
                     </span>
                   </div>
                 </button>
-                {openIndex === index && (
-                  <div className="px-2 pb-4 text-black/80 text-sm">
+                <div 
+                  className={`px-2 overflow-hidden transition-all duration-300 ease-in-out ${
+                    openIndex === index ? "max-h-32 opacity-100 pb-4" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="text-black/80 text-sm">
                     {industry.description}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
