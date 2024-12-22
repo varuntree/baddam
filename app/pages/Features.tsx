@@ -7,8 +7,8 @@ import FeatureCard from "../components/FeatureCard";
 export default function Features() {
   const features = [
     {
-      title: "Find & understand information",
-      description: "Easily find and understand the information you need with our advanced search and explore capabilities.",
+      title: "Solutions",
+      description: "Discover tailored AI solutions for your enterprise needs.",
       imageSrc: "/feature1.png"
     },
     {
@@ -24,15 +24,15 @@ export default function Features() {
   ];
 
   return (
-    <div className="min-h-screen bg-black/95 py-24">
+    <div className="min-h-screen bg-white py-24">
       <div className="container mx-auto px-4">
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">FEATURES</h2>
-          <p className="text-2xl text-white/90 max-w-2xl">
+          <h2 className="text-4xl font-bold text-black mb-4">FEATURES</h2>
+          <p className="text-2xl text-black/90 max-w-2xl">
             The Work AI platform for quickly & securely bringing AI into the enterprise.
           </p>
         </div>
-        <div className="flex flex-wrap gap-8 justify-center">
+        <div className="flex flex-wrap lg:flex-nowrap gap-8 justify-center">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
