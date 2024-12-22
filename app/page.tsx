@@ -3,6 +3,7 @@ import Header from "./pages/Header";
 import Features from "./pages/Features";
 import HowWeWork from "./pages/HowWeWork";
 import Industries from "./pages/Industries";
+import AboutUs from "./pages/AboutUs";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Features />
       <HowWeWork />
       <Industries />
+      <AboutUs />
     </div>
   );
 }
