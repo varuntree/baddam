@@ -5,6 +5,8 @@ import React from "react";
 import StepCard from "../components/StepCard";
 
 export default function HowWeWork() {
+  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]); // [left, middle, right]
+  
   const steps = [
     {
       title: "Find answers & generate content you can trust",
@@ -19,6 +21,10 @@ export default function HowWeWork() {
       description: "Leverage our advanced AI capabilities to scale your operations efficiently while continuously optimizing performance and outcomes across your organization.",
     },
   ];
+
+  const handleNext = () => {
+    setCurrentArrangement(prev => [(prev[0] + 1) % 3, (prev[1] + 1) % 3, (prev[2] + 1) % 3]);
+  };
 
   return (
     <div className="min-h-screen bg-black py-24">
@@ -40,12 +46,12 @@ export default function HowWeWork() {
               }, 100);
             }
           }}>
-            {steps.map((step, index) => (
-              <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+            {currentArrangement.map((stepIndex, position) => (
+              <div key={position} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
-                  stepNumber={index + 1}
-                  title={step.title}
-                  description={step.description}
+                  stepNumber={stepIndex + 1}
+                  title={steps[stepIndex].title}
+                  description={steps[stepIndex].description}
                 />
               </div>
             ))}
@@ -58,7 +64,7 @@ export default function HowWeWork() {
               ←
             </button>
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy({ left: 600, behavior: 'smooth' })}
+              onClick={handleNext}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
