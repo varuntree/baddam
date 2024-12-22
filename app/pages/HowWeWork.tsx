@@ -33,7 +33,7 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory" id="slider" ref={(el) => {
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider" ref={(el) => {
             if (el) {
               setTimeout(() => {
                 el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
@@ -52,13 +52,13 @@ export default function HowWeWork() {
           </div>
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy(-600, 0)}
+              onClick={() => document.getElementById('slider')?.scrollBy({ left: -600, behavior: 'smooth' })}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               ←
             </button>
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy(600, 0)}
+              onClick={() => document.getElementById('slider')?.scrollBy({ left: 600, behavior: 'smooth' })}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
