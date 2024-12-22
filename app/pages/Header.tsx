@@ -1,20 +1,19 @@
-
 "use client";
+
 import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import CornerEdgeCard from "../components/CornerEdgeCard";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function Header() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!imageRef.current || typeof window === "undefined") return;
+    // Register ScrollTrigger inside useEffect to avoid hydration issues
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!imageRef.current) return;
 
     const ctx = gsap.context(() => {
       // Initial animation on page load
@@ -32,8 +31,9 @@ export default function Header() {
       const matchMediaQuery = window.matchMedia("(min-width: 768px)");
 
       const setupScrollAnimation = (matches: boolean) => {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-        
+        // Clean up previous ScrollTriggers
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+
         gsap.to(imageRef.current, {
           scrollTrigger: {
             trigger: imageRef.current,
@@ -50,19 +50,23 @@ export default function Header() {
         });
       };
 
+      // Set up animations initially
       setupScrollAnimation(matchMediaQuery.matches);
-      matchMediaQuery.addEventListener("change", (e) =>
-        setupScrollAnimation(e.matches)
-      );
+
+      // Listen for screen size changes
+      const listener = (e: MediaQueryListEvent) => setupScrollAnimation(e.matches);
+      matchMediaQuery.addEventListener("change", listener);
 
       return () => {
-        matchMediaQuery.removeEventListener("change", (e) =>
-          setupScrollAnimation(e.matches)
-        );
+        // Cleanup on component unmount
+        matchMediaQuery.removeEventListener("change", listener);
       };
     });
 
-    return () => ctx.revert();
+    return () => {
+      // Revert GSAP context
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -76,8 +80,11 @@ export default function Header() {
       >
         <source src="/headerVideo.mp4" type="video/mp4" />
       </video>
+
       <div className="absolute inset-0 bg-black/40 backdrop-blur-lg" />
+
       <Navbar />
+
       <div className="relative z-10 container mx-auto px-4 flex flex-col items-center justify-center min-h-screen pt-24">
         <CornerEdgeCard highlightedWords={["Businesses", "Automation"]} />
         <div className="flex justify-center gap-4 mt-8">

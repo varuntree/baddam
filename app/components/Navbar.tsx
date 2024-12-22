@@ -59,15 +59,19 @@ export default function Navbar() {
               <div className="flex space-x-4 relative">
                 {navItems.map((item, index) => (
                   <Link
-                    key={item.name}
-                    href={item.href}
-                    ref={el => navRefs.current[index] = el}
-                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium relative"
-                    onMouseEnter={() => updateSliderPosition(index)}
-                    onMouseLeave={() => updateSliderPosition(-1)}
-                  >
-                    {item.name}
-                  </Link>
+                            key={item.name}
+                            href={item.href}
+                            ref={(el) => {
+                              if (el) {
+                              navRefs.current[index] = el;
+                              }
+                            }}
+                            className="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium relative"
+                            onMouseEnter={() => updateSliderPosition(index)}
+                            onMouseLeave={() => updateSliderPosition(-1)}
+                            >
+                            {item.name}
+                            </Link>
                 ))}
               </div>
             </div>

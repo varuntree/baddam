@@ -15,8 +15,10 @@ export default function CornerEdgeCard({
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Animate in corner icons
     const tl = gsap.timeline();
 
+    // Move from off-screen to visible
     tl.to(topLeftRef.current, {
       x: "-50%",
       y: "-50%",
@@ -36,7 +38,8 @@ export default function CornerEdgeCard({
     );
 
     return () => {
-      tl.kill(); // Cleanup on component unmount
+      // Cleanup on component unmount
+      tl.kill();
     };
   }, []);
 
@@ -52,8 +55,7 @@ export default function CornerEdgeCard({
           alt="Top Left Corner Decoration"
           width={40}
           height={40}
-          placeholder="blur"
-          blurDataURL="/top-left.svg" // Fallback blur for placeholder
+          // Removed placeholder & blurDataURL to avoid hydration issues
         />
       </div>
 
@@ -67,8 +69,7 @@ export default function CornerEdgeCard({
           alt="Bottom Right Corner Decoration"
           width={40}
           height={40}
-          placeholder="blur"
-          blurDataURL="/bottom-right.svg" // Fallback blur for placeholder
+          // Removed placeholder & blurDataURL to avoid hydration issues
         />
       </div>
 
