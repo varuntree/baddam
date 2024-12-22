@@ -57,7 +57,7 @@ export default function Industries() {
         alt="Robot Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <div className="absolute inset-0" />
       
       {/* Side Card */}
       <div className="absolute top-0 bottom-0 left-0 w-1/4 bg-white/10 backdrop-blur-md border-r border-white/20">
