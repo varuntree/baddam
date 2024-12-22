@@ -1,5 +1,5 @@
-
-import React, { useEffect, useRef } from 'react';
+"use client";
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import CornerEdgeCard from '../components/CornerEdgeCard';
 import gsap from 'gsap';
@@ -9,36 +9,47 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
     const imageRef = useRef<HTMLDivElement>(null);
+    const [hasHydrated, setHasHydrated] = useState(false);
 
     useEffect(() => {
+        setHasHydrated(true); // Ensure animations are client-only
+    }, []);
+
+    useEffect(() => {
+        if (!imageRef.current || !hasHydrated) return;
+
         const matchMediaQuery = window.matchMedia('(min-width: 768px)');
-        
+
         const setupAnimation = (matches: boolean) => {
-            if (imageRef.current) {
-                gsap.to(imageRef.current, {
-                    scrollTrigger: {
-                        trigger: imageRef.current,
-                        start: "top 60%",
-                        end: "bottom 40%",
-                        scrub: 1,
-                    },
-                    rotateX: matches ? 30 : 20,
-                    scale: matches ? 1.1 : 1.05,
-                    transformPerspective: 1000,
-                    transformOrigin: "center center",
-                    duration: 1,
-                    ease: "power2.out"
-                });
-            }
+            ScrollTrigger.killAll(); // Clean up old animations
+            gsap.to(imageRef.current, {
+                scrollTrigger: {
+                    trigger: imageRef.current,
+                    start: "top 80%",
+                    end: "bottom 40%",
+                    scrub: 1,
+                },
+                rotateX: matches ? 30 : 20,
+                scale: matches ? 1.1 : 1.05,
+                transformPerspective: 1000,
+                transformOrigin: "center center",
+                duration: 1,
+                ease: "power2.out"
+            });
         };
 
         setupAnimation(matchMediaQuery.matches);
         matchMediaQuery.addEventListener('change', (e) => setupAnimation(e.matches));
 
         return () => {
+            ScrollTrigger.killAll(); // Cleanup on unmount
             matchMediaQuery.removeEventListener('change', (e) => setupAnimation(e.matches));
         };
-    }, []);
+    }, [hasHydrated]);
+
+    if (!hasHydrated) {
+        return null; // Prevent initial mismatch
+    }
 
     return (
         <div className="relative min-h-screen w-full">
@@ -72,7 +83,7 @@ export default function Header() {
                     <img 
                         src="/header-automation.png" 
                         alt="Automation Header" 
-                        className="w-full h-auto rounded-3xl shadow-2xl"
+                         className="w-[60%] mx-auto h-auto rounded-3xl shadow-2xl"
                     />
                 </div>
             </div>
