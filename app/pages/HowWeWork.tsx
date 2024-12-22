@@ -1,10 +1,11 @@
+
 "use client";
 
 import React, { useState } from "react";
 import StepCard from "../components/StepCard";
 
 export default function HowWeWork() {
-  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]); // [left, middle, right]
+  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]);
   
   const steps = [
     {
@@ -26,27 +27,33 @@ export default function HowWeWork() {
   };
 
   return (
-    <div className="min-h-screen bg-black py-24">
+    <div className="min-h-screen bg-black py-24 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="mb-16 flex items-center justify-between gap-8">
-          <h1 className="text-5xl font-bold text-white w-1/2">
+        <div className="mb-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 animate-fade-in">
+          <h1 className="text-4xl lg:text-5xl font-bold text-white lg:w-1/2 transition-all duration-500 ease-in-out transform hover:scale-105">
             AI that works for everyone.
           </h1>
-          <p className="text-xl text-white/70 w-1/2">
+          <p className="text-lg lg:text-xl text-white/70 lg:w-1/2 transition-all duration-500">
             Delivering AI that works for everyone, from individuals to large enterprises.
           </p>
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider" ref={(el) => {
-            if (el) {
-              setTimeout(() => {
-                el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
-              }, 100);
-            }
-          }}>
+          <div 
+            className="flex gap-8 pb-8 transition-all duration-700 ease-in-out"
+            style={{
+              transform: `translateX(-${currentArrangement[0] * 33.33}%)`,
+            }}
+          >
             {currentArrangement.map((stepIndex, position) => (
-              <div key={position} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+              <div 
+                key={position} 
+                className="shrink-0 w-full lg:w-[600px] transform transition-all duration-700 ease-in-out hover:scale-105"
+                style={{
+                  opacity: position === 1 ? 1 : 0.7,
+                  transform: `scale(${position === 1 ? 1 : 0.95})`,
+                }}
+              >
                 <StepCard
                   stepNumber={stepIndex + 1}
                   title={steps[stepIndex].title}
@@ -55,16 +62,17 @@ export default function HowWeWork() {
               </div>
             ))}
           </div>
+          
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy({ left: -600, behavior: 'smooth' })}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+              onClick={() => setCurrentArrangement(prev => [prev[2], prev[0], prev[1]])}
+              className="bg-white/10 hover:bg-white/20 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:scale-110 active:scale-95"
             >
               ←
             </button>
             <button 
               onClick={handleNext}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+              className="bg-white/10 hover:bg-white/20 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:scale-110 active:scale-95"
             >
               →
             </button>
