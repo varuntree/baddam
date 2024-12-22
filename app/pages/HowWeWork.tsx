@@ -153,7 +153,7 @@ export default function HowWeWork() {
               className="
                 px-6 py-2 
                 rounded-full 
-                border border-white/10 
+                border border-primary
                 text-white 
                 bg-transparent 
                 hover:bg-primary 
