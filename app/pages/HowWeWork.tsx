@@ -1,11 +1,10 @@
+
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import StepCard from "../components/StepCard";
 
 export default function HowWeWork() {
-  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]); // [left, middle, right]
-  
   const steps = [
     {
       title: "Find answers & generate content you can trust",
@@ -21,10 +20,6 @@ export default function HowWeWork() {
     },
   ];
 
-  const handleNext = () => {
-    setCurrentArrangement(prev => [(prev[0] + 1) % 3, (prev[1] + 1) % 3, (prev[2] + 1) % 3]);
-  };
-
   return (
     <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
@@ -38,32 +33,26 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider" ref={(el) => {
-            if (el) {
-              setTimeout(() => {
-                el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
-              }, 100);
-            }
-          }}>
-            {currentArrangement.map((stepIndex, position) => (
-              <div key={position} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory" id="slider">
+            {steps.map((step, index) => (
+              <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
-                  stepNumber={stepIndex + 1}
-                  title={steps[stepIndex].title}
-                  description={steps[stepIndex].description}
+                  stepNumber={index + 1}
+                  title={step.title}
+                  description={step.description}
                 />
               </div>
             ))}
           </div>
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={() => document.getElementById('slider')?.scrollBy({ left: -600, behavior: 'smooth' })}
+              onClick={() => document.getElementById('slider')?.scrollBy(-600, 0)}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               ←
             </button>
             <button 
-              onClick={handleNext}
+              onClick={() => document.getElementById('slider')?.scrollBy(600, 0)}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
