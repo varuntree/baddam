@@ -36,7 +36,7 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
             {title}
           </h3>
           <div
-            className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-500 flex items-center justify-center p-6 ${
+            className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-all duration-500 flex items-start justify-start p-8 py-10 overflow-y-auto ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
           >
