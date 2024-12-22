@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import TiltCard from '../components/TiltCard';
 
 const teamMembers = [
   {
@@ -78,20 +79,24 @@ export default function AboutUs() {
 
         {/* Mission & Vision Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-neutral-900 p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
-            <p className="text-white/70">
-              We aim to empower businesses by transforming their operations through AI innovation,
-              ensuring they are equipped for the challenges of tomorrow.
-            </p>
-          </div>
-          <div className="bg-neutral-900 p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
-            <p className="text-white/70">
-              To revolutionize industries by making AI an integral, accessible, and impactful
-              part of every business.
-            </p>
-          </div>
+          <TiltCard>
+            <div className="bg-neutral-900 p-8 rounded-3xl h-full">
+              <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
+              <p className="text-white/70">
+                We aim to empower businesses by transforming their operations through AI innovation,
+                ensuring they are equipped for the challenges of tomorrow.
+              </p>
+            </div>
+          </TiltCard>
+          <TiltCard>
+            <div className="bg-neutral-900 p-8 rounded-3xl h-full">
+              <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
+              <p className="text-white/70">
+                To revolutionize industries by making AI an integral, accessible, and impactful
+                part of every business.
+              </p>
+            </div>
+          </TiltCard>
         </div>
 
         {/* Core Values Section */}
@@ -99,16 +104,19 @@ export default function AboutUs() {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value, index) => (
-              <div key={index} className="bg-neutral-900 p-8 rounded-3xl">
-                <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
-                <p className="text-white/70">{value.description}</p>
-              </div>
+              <TiltCard key={index}>
+                <div className="bg-neutral-900 p-8 rounded-3xl h-full">
+                  <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
+                  <p className="text-white/70">{value.description}</p>
+                </div>
+              </TiltCard>
             ))}
           </div>
         </div>
 
         {/* Story Section */}
-        <div className="mb-16 bg-neutral-900 p-8 rounded-3xl">
+        <TiltCard>
+          <div className="mb-16 bg-neutral-900 p-8 rounded-3xl">
           <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Story</h2>
           <p className="text-white/70 text-center max-w-4xl mx-auto">
             Founded with the belief that AI can empower businesses of all sizes, we've grown
