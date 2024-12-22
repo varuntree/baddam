@@ -5,7 +5,7 @@ import CornerEdgeCard from '../components/CornerEdgeCard';
 
 export default function Header() {
     return (
-        <div className="relative h-screen w-full">
+        <div className="relative min-h-screen w-full">
             <video 
                 className="absolute top-0 left-0 w-full h-full object-cover"
                 autoPlay

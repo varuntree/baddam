@@ -5,7 +5,12 @@ import Header from "./pages/Header";
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Header />
+      <div>
+        <Header />
+      </div>
+      <div>
+        
+      </div>
     </div>
   );
 }
