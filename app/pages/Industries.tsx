@@ -60,7 +60,7 @@ export default function Industries() {
       <div className="absolute inset-0" />
       
       {/* Side Card */}
-      <div className="absolute top-0 bottom-0 left-0 md:w-1/4 w-full bg-white/10 backdrop-blur-sm md:backdrop-blur-md border-r border-white/20">
+      <div className="absolute top-0 bottom-0 left-0 pt-8 md:w-1/4 w-full bg-white/10 backdrop-blur-sm md:backdrop-blur-md border-r border-white/20">
         <div className="p-6">
           <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
           <div className="space-y-2">
