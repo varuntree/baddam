@@ -110,7 +110,7 @@ export default function AboutUs() {
         {/* Mission & Vision Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div 
-            ref={el => cardsRef.current[0] = el}
+            ref={el => {cardsRef.current[0] = el}}
             className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
           >
             <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
@@ -120,7 +120,7 @@ export default function AboutUs() {
             </p>
           </div>
           <div 
-            ref={el => cardsRef.current[1] = el}
+            ref={el => {cardsRef.current[1] = el}}
             className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
           >
             <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
@@ -138,7 +138,7 @@ export default function AboutUs() {
             {coreValues.map((value, index) => (
               <div 
                 key={index}
-                ref={el => cardsRef.current[index + 2] = el}
+                ref={el => {cardsRef.current[index + 2] = el}}
                 className="bg-neutral-900 p-8 rounded-3xl transform-gpu"
               >
                 <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
@@ -150,7 +150,7 @@ export default function AboutUs() {
 
         {/* Story Section */}
         <div 
-          ref={el => cardsRef.current[5] = el}
+          ref={el => {cardsRef.current[5] = el}}
           className="mb-16 bg-neutral-900 p-8 rounded-3xl transform-gpu"
         >
           <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Story</h2>
@@ -176,7 +176,7 @@ export default function AboutUs() {
               {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
                 <div
                   key={index}
-                  ref={el => cardsRef.current[index + 6] = el}
+                  ref={el => {cardsRef.current[index + 6] = el}}
                   className="flex-shrink-0 w-[350px] bg-neutral-900 rounded-3xl overflow-hidden transform-gpu"
                 >
                   <div className="h-[400px] relative bg-neutral-800">
