@@ -82,19 +82,19 @@ export default function HowWeWork() {
   }, []);
 
   return (
-    <div className="h-screen bg-black py-12 md:py-24">
-      <div className="container mx-auto px-4 h-full flex flex-col">
-        <div className="mb-8 md:mb-16 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-          <h1 className="text-3xl md:text-5xl font-bold text-white w-full md:w-1/2 text-center md:text-left">
+    <div className="min-h-screen bg-black py-24">
+      <div className="container mx-auto px-4">
+        <div className="mb-16 flex items-center justify-between gap-8">
+          <h1 className="text-5xl font-bold text-white w-1/2">
             AI that works for everyone.
           </h1>
-          <p className="text-lg md:text-xl text-white/70 w-full md:w-1/2 text-center md:text-left">
+          <p className="text-xl text-white/70 w-1/2">
             Delivering AI that works for everyone, from individuals to large enterprises.
           </p>
         </div>
         
-        <div className="relative overflow-hidden flex-1">
-          <div className="relative h-[300px] md:h-[400px]">
+        <div className="relative overflow-hidden">
+          <div className="relative h-[400px] md:h-[500px]">
             {steps.map((step, index) => (
               <div
                 key={index}
