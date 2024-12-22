@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-r from-orange-200 to-white py-20 overflow-hidden">
+    <footer className="relative bg-black py-20 overflow-hidden">
       {/* Orange smoke effect */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-t from-orange-400/30 via-orange-300/20 to-transparent rounded-full blur-3xl -mr-48 mb-[-8rem] rotate-12 mix-blend-soft-light"></div>
       
