@@ -12,7 +12,7 @@ interface StepCardProps {
 
 export default function StepCard({ stepNumber, title, description }: StepCardProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-8 h-full items-center">
+    <div className="flex flex-col md:flex-row gap-8 h-full items-center bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 p-6">
       <div className="relative w-full md:w-1/2 h-full">
         <Image
           src={`/step${stepNumber}.png`}
