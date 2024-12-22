@@ -60,16 +60,16 @@ export default function Industries() {
       
       {/* Glassmorphic Card */}
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-96 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 flex-col items-center justify-between p-8">
-        <h3 className="text-2xl font-bold text-white text-center flex items-center justify-center h-full">
+        <h3 className="text-2xl font-bold text-black text-center flex items-center justify-center h-full">
           "Automate to dominate profits."
         </h3>
-        <button className="w-full py-4 px-8 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl text-white font-semibold transition-all duration-300">
+        <button className="w-full py-4 px-8 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl text-black font-semibold transition-all duration-300">
           Book Now
         </button>
       </div>
 
       {/* Side Card */}
-      <div className="absolute top-0 bottom-0 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-sm md:backdrop-blur-md border-r border-white/20">
+      <div className="absolute top-0 bottom-0 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-lg md:backdrop-blur-2xl border-r border-white/20">
         <div className="p-6">
           <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
           <div className="space-y-2">
