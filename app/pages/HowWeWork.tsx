@@ -1,14 +1,10 @@
 
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import StepCard from "../components/StepCard";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function HowWeWork() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  
   const steps = [
     {
       title: "Find answers & generate content you can trust",
@@ -24,17 +20,6 @@ export default function HowWeWork() {
     },
   ];
 
-  const scrollTo = (direction: 'left' | 'right') => {
-    if (!sliderRef.current) return;
-    
-    const scrollAmount = 600;
-    gsap.to(sliderRef.current, {
-      scrollLeft: `${direction === 'left' ? '-=' : '+='}${scrollAmount}`,
-      duration: 1,
-      ease: "power2.out"
-    });
-  };
-
   return (
     <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
@@ -48,11 +33,7 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div 
-            ref={sliderRef}
-            className="flex overflow-x-scroll gap-8 pb-8 snap-x snap-mandatory scrollbar-hide"
-            id="slider"
-          >
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory transition-transform duration-700 ease-out" id="slider">
             {steps.map((step, index) => (
               <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
@@ -65,13 +46,13 @@ export default function HowWeWork() {
           </div>
           <div className="flex justify-center gap-4 mt-8">
             <button 
-              onClick={() => scrollTo('left')}
+              onClick={() => document.getElementById('slider')?.scrollBy(-600, 0)}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               ←
             </button>
             <button 
-              onClick={() => scrollTo('right')}
+              onClick={() => document.getElementById('slider')?.scrollBy(600, 0)}
               className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
