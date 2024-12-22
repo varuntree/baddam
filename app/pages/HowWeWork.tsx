@@ -71,12 +71,13 @@ export default function HowWeWork() {
               {currentArrangement.map((stepIndex, position) => (
                 <motion.div
                   key={position}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.95, x: 100 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, x: -100 }}
                   transition={{
-                    duration: 0.5,
-                    ease: "easeInOut"
+                    duration: 0.4,
+                    ease: [0.165, 0.84, 0.44, 1],
+                    opacity: { duration: 0.3 }
                   }}
                   className="snap-center shrink-0 w-[90vw] md:w-[600px]"
                 >
