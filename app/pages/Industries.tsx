@@ -51,7 +51,7 @@ export default function Industries() {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen rounded-3xl overflow-hidden">
       <img
         src="/robo.jpg"
         alt="Robot Background"
