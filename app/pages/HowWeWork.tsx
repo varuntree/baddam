@@ -32,15 +32,18 @@ export default function HowWeWork() {
           </p>
         </div>
         
-        <div className="space-y-24">
-          {steps.map((step, index) => (
-            <StepCard
-              key={index}
-              stepNumber={index + 1}
-              title={step.title}
-              description={step.description}
-            />
-          ))}
+        <div className="relative">
+          <div className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory">
+            {steps.map((step, index) => (
+              <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+                <StepCard
+                  stepNumber={index + 1}
+                  title={step.title}
+                  description={step.description}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
