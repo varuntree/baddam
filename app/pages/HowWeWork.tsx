@@ -97,7 +97,7 @@ export default function HowWeWork() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black py-16 md:py-24 rounded-3xl">
+    <div className="min-h-screen bg-black py-16 md:py-24 rounded-3xl overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -132,7 +132,7 @@ export default function HowWeWork() {
           </div>
 
           {/* Navigation + Book Now Buttons */}
-          <div className="flex flex-wrap justify-center items-center gap-3  md:mt-8 mt-20 relative z-10">
+          <div className="flex flex-wrap justify-center items-center gap-3  md:mt-8 mt-44 relative z-10">
             <button
               onClick={slidePrev}
               className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm disabled:opacity-50"
