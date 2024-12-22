@@ -40,7 +40,7 @@ export default function Features() {
         {/* First Row */}
         <div className="flex flex-col lg:flex-row gap-8 mb-8">
           <div className="lg:w-1/4">
-            <h3 className="text-3xl font-bold text-black mb-4 lg:mb-0">Solutions</h3>
+            <h3 className="text-3xl font-bold text-secondary mb-4 lg:mb-0">Solutions</h3>
           </div>
           <div className="lg:w-3/4">
             <FeatureCard
