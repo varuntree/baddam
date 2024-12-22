@@ -21,13 +21,13 @@ export default function HowWeWork() {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-24">
+    <div className="min-h-screen bg-black py-24">
       <div className="container mx-auto px-4">
         <div className="mb-16">
-          <h1 className="text-5xl font-bold mb-4">
+          <h1 className="text-5xl font-bold mb-4 text-white">
             AI that works for <br /> everyone.
           </h1>
-          <p className="text-xl text-black/70">
+          <p className="text-xl text-white/70">
             Delivering AI that works for everyone, from individuals to large enterprises.
           </p>
         </div>
