@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-orange-200 to-white py-20">
+    <footer className="bg-black text-white py-20">
       <div className="container mx-auto px-4">
         {/* Call to Action */}
-        <div className="relative text-center mb-16 p-8 backdrop-blur-sm bg-white/5 rounded-3xl border border-white/10 mx-auto max-w-3xl">
+        <div className="text-center mb-16">
           <p className="text-primary text-sm mb-2">[ INTERESTED? ]</p>
           <h2 className="text-4xl md:text-5xl font-medium mb-4">
             Are you ready to be{" "}
