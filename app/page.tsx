@@ -4,6 +4,7 @@ import Features from "./pages/Features";
 import HowWeWork from "./pages/HowWeWork";
 import Industries from "./pages/Industries";
 import AboutUs from "./pages/AboutUs";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HowWeWork />
       <Industries />
       <AboutUs />
+      <Footer />
     </div>
   );
 }
