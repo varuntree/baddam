@@ -59,9 +59,9 @@ export default function Industries() {
       <div className="absolute inset-0" />
       
       {/* Glassmorphic Card */}
-      <div className="hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 flex-col items-center justify-between p-8">
+      <div className="hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96 bg-black/10 backdrop-blur-2xl rounded-3xl border border-white/20 flex-col items-center justify-between p-8">
         <h3 className="text-2xl font-bold text-black text-center flex items-center justify-center h-full">
-          "Automate to dominate profits."
+          "Automate to dominate profits"
         </h3>
         <button className="w-full py-4 px-8 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl text-black font-semibold transition-all duration-300">
           Book Now
