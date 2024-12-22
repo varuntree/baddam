@@ -7,7 +7,7 @@ import gsap from "gsap";
 
 export default function HowWeWork() {
   const [currentStep, setCurrentStep] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const steps = [
     {
@@ -26,25 +26,61 @@ export default function HowWeWork() {
 
   const slideNext = () => {
     if (currentStep < steps.length - 1) {
+      const currentCard = cardRefs.current[currentStep];
+      const nextCard = cardRefs.current[currentStep + 1];
+      
+      if (currentCard && nextCard) {
+        gsap.to(currentCard, {
+          x: '-100%',
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out"
+        });
+        
+        gsap.fromTo(nextCard,
+          { x: '100%', opacity: 0 },
+          { x: '0%', opacity: 1, duration: 0.7, ease: "power2.out" }
+        );
+      }
+      
       setCurrentStep(prev => prev + 1);
-      gsap.to(sliderRef.current, {
-        x: `-${(currentStep + 1) * 100}%`,
-        duration: 0.7,
-        ease: "power2.out"
-      });
     }
   };
 
   const slidePrev = () => {
     if (currentStep > 0) {
+      const currentCard = cardRefs.current[currentStep];
+      const prevCard = cardRefs.current[currentStep - 1];
+      
+      if (currentCard && prevCard) {
+        gsap.to(currentCard, {
+          x: '100%',
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out"
+        });
+        
+        gsap.fromTo(prevCard,
+          { x: '-100%', opacity: 0 },
+          { x: '0%', opacity: 1, duration: 0.7, ease: "power2.out" }
+        );
+      }
+      
       setCurrentStep(prev => prev - 1);
-      gsap.to(sliderRef.current, {
-        x: `-${(currentStep - 1) * 100}%`,
-        duration: 0.7,
-        ease: "power2.out"
-      });
     }
   };
+
+  useEffect(() => {
+    // Initialize card positions
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.set(card, {
+          x: index === 0 ? '0%' : '100%',
+          opacity: index === 0 ? 1 : 0
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-black py-24">
@@ -59,13 +95,13 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative overflow-hidden">
-          <div 
-            ref={sliderRef}
-            className="flex w-full transition-transform duration-700 ease-out"
-            style={{ width: `${steps.length * 100}%` }}
-          >
+          <div className="relative h-[500px]">
             {steps.map((step, index) => (
-              <div key={index} className="w-full px-4">
+              <div
+                key={index}
+                ref={el => cardRefs.current[index] = el}
+                className="absolute top-0 left-0 w-full"
+              >
                 <StepCard
                   stepNumber={index + 1}
                   title={step.title}
