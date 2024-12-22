@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import VanillaTilt from 'vanilla-tilt';
 
 const teamMembers = [
   {
@@ -55,11 +56,24 @@ export default function AboutUs() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
+    // Initialize scroll animation
     const interval = setInterval(() => {
       setScrollPosition((prev) => (prev + 1) % (teamMembers.length * 100));
     }, 50);
 
-    return () => clearInterval(interval);
+    // Initialize tilt effect
+    const elements = document.querySelectorAll('[data-tilt]');
+    elements.forEach(element => {
+      VanillaTilt.init(element);
+    });
+
+    return () => {
+      clearInterval(interval);
+      elements.forEach(element => {
+        // @ts-ignore
+        element._vanilla?.destroy();
+      });
+    };
   }, []);
 
   return (
@@ -78,14 +92,14 @@ export default function AboutUs() {
 
         {/* Mission & Vision Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-neutral-900 p-8 rounded-3xl">
+          <div className="bg-neutral-900 p-8 rounded-3xl transform-gpu" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
             <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
             <p className="text-white/70">
               We aim to empower businesses by transforming their operations through AI innovation,
               ensuring they are equipped for the challenges of tomorrow.
             </p>
           </div>
-          <div className="bg-neutral-900 p-8 rounded-3xl">
+          <div className="bg-neutral-900 p-8 rounded-3xl transform-gpu" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
             <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
             <p className="text-white/70">
               To revolutionize industries by making AI an integral, accessible, and impactful
@@ -99,7 +113,7 @@ export default function AboutUs() {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value, index) => (
-              <div key={index} className="bg-neutral-900 p-8 rounded-3xl">
+              <div key={index} className="bg-neutral-900 p-8 rounded-3xl transform-gpu" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
                 <p className="text-white/70">{value.description}</p>
               </div>
