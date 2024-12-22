@@ -64,7 +64,7 @@ export default function Header() {
             </video>
             <div className="absolute inset-0 bg-black/40 backdrop-blur-lg"></div>
             <Navbar />
-            <div className="relative z-10 container mx-auto px-4 flex flex-col items-center justify-center min-h-screen">
+            <div className="relative z-10 container mx-auto px-4 flex flex-col items-center justify-center min-h-screen pt-24">
                 <CornerEdgeCard 
                     highlightedWords={["Businesses", "Automation"]} 
                 />
