@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative backdrop-blur-md bg-black/60 text-white py-20 overflow-hidden">
-  <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-gradient-to-t from-orange-500/40 via-orange-400/20 to-transparent blur-3xl"></div>
+  <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-t from-orange-500/10 via-orange-400/20 to-transparent blur-3xl"></div>
       <div className="container mx-auto px-4">
         {/* Call to Action */}
         <div className="text-center mb-16">
