@@ -5,10 +5,16 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-20">
-      <div className="container mx-auto px-4">
+    <footer className="relative bg-black text-white py-20 overflow-hidden">
+      {/* Orange smoke effect */}
+      <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-gradient-to-t from-orange-500/30 via-orange-400/20 to-transparent rounded-full blur-3xl -mr-48 mb-[-8rem] mix-blend-soft-light"></div>
+      
+      {/* White smoke effect */}
+      <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-gradient-to-t from-white/30 via-white/20 to-transparent rounded-full blur-3xl -ml-48 mb-[-8rem] mix-blend-overlay"></div>
+      
+      <div className="container mx-auto px-4 relative">
         {/* Call to Action */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 p-8 backdrop-blur-sm bg-white/5 rounded-3xl border border-white/10">
           <p className="text-primary text-sm mb-2">[ INTERESTED? ]</p>
           <h2 className="text-4xl md:text-5xl font-medium mb-4">
             Are you ready to be <span className="text-primary">turbocharged</span>?
