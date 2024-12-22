@@ -19,12 +19,12 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative w-full aspect-[4/3]">
+      <div className="relative h-[300px] w-full">
         <Image
           src={imageSrc}
           alt={title}
           fill
-          className="object-cover w-full h-full"
+          className="object-cover"
         />
         <div
           className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 flex flex-col justify-end p-6 ${

@@ -35,11 +35,11 @@ export default function Features() {
             enterprise.
           </p>
         </div>
-        <div className="grid lg:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-3xl font-bold text-black mb-4 lg:sticky lg:top-24">Solutions</h3>
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="lg:w-1/4">
+            <h3 className="text-3xl font-bold text-black mb-4">Solutions</h3>
           </div>
-          <div className="lg:col-span-3 grid md:grid-cols-3 gap-8">
+          <div className="lg:w-3/4 flex flex-col md:flex-row gap-8 flex-wrap lg:flex-nowrap">
             {features.map((feature, index) => (
               <FeatureCard
                 key={index}
