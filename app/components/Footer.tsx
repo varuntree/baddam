@@ -5,7 +5,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-20">
+    <footer className="relative bg-black/60 backdrop-blur-xl text-white py-20 before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/40 before:to-transparent">
+  {/* Orange smoke effect */}
+  <div className="absolute bottom-0 right-0 w-[40vw] h-[40vh] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/40 via-orange-500/20 to-transparent blur-3xl rounded-full pointer-events-none" 
+    style={{
+      animation: 'smoke 8s infinite alternate',
+    }}
+  />
       <div className="container mx-auto px-4">
         {/* Call to Action */}
         <div className="text-center mb-16">
