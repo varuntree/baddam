@@ -10,19 +10,19 @@ export default function HowWeWork() {
 
   const steps = [
     {
-      title: "Find answers & generate content you can trust",
+      title: "Consultation & Goal Setting",
       description:
-        "Access well-researched, accurate answers and confidently generate content that is backed by trustworthy information, allowing you to deliver messages that inspire trust and credibility.",
+        "We begin by understanding your business needs, challenges, and objectives to ensure our AI solutions align perfectly with your goals and deliver maximum value to your organization.",
     },
     {
-      title: "Transform Ideas into Solutions",
+      title: "Custom AI Design",
       description:
-        "Our AI-powered platform takes your ideas and transforms them into practical, implementable solutions that drive real business value and innovation.",
+        "Our team creates tailored AI solutions that seamlessly integrate with your existing workflows, ensuring a perfect fit for your specific business requirements and processes.",
     },
     {
-      title: "Scale and Optimize",
+      title: "Implementation & Support",
       description:
-        "Leverage our advanced AI capabilities to scale your operations efficiently while continuously optimizing performance and outcomes across your organization.",
+        "We provide comprehensive support throughout the implementation process, helping you integrate, optimize, and scale your AI operations for sustainable long-term success.",
     },
   ];
 
