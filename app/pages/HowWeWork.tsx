@@ -33,7 +33,13 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory" id="slider">
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory" id="slider" ref={(el) => {
+            if (el) {
+              setTimeout(() => {
+                el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
+              }, 100);
+            }
+          }}>
             {steps.map((step, index) => (
               <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
