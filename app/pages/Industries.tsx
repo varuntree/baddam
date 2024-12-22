@@ -51,7 +51,7 @@ export default function Industries() {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen rounded-3xl overflow-hidden py-16">
       <img
         src="/robo.jpg"
         alt="Robot Background"
@@ -60,15 +60,15 @@ export default function Industries() {
       <div className="absolute inset-0" />
       
       {/* Side Card */}
-      <div className="absolute top-0 bottom-0 left-0 w-1/4 bg-white/10 backdrop-blur-md border-r border-white/20">
+      <div className="absolute lg:relative top-0 bottom-0 left-0 w-full lg:w-1/4 bg-white/10 backdrop-blur-md border-r border-white/20">
         <div className="p-6">
-          <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
-          <div className="space-y-2">
+          <h2 className="text-2xl font-bold text-black mb-4 px-4 lg:px-0">Industries</h2>
+          <div className="space-y-2 max-h-[70vh] overflow-y-auto">
             {industries.map((industry, index) => (
               <div key={index} className="border-b border-white/20">
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full py-4 px-2 text-left text-black hover:bg-white/10 transition-colors"
+                  className="w-full py-4 px-4 lg:px-2 text-left text-black hover:bg-white/10 transition-colors"
                 >
                   <div className="flex justify-between items-center">
                     <span className="font-medium">{industry.title}</span>
