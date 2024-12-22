@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import FeatureCard from "../components/FeatureCard";
 
 export default function Features() {
@@ -64,6 +65,11 @@ export default function Features() {
               />
             ))}
           </div>
+        </div>
+        <div className="flex justify-center mt-16">
+          <Link href="/solutions" className="px-8 py-3 bg-black text-white rounded-3xl hover:bg-black/80 transition-colors">
+            More Solutions
+          </Link>
         </div>
       </div>
     </div>
