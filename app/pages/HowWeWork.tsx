@@ -33,7 +33,7 @@ export default function HowWeWork() {
         </div>
         
         <div className="relative">
-          <div className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory">
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory" id="slider">
             {steps.map((step, index) => (
               <div key={index} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
                 <StepCard
@@ -44,6 +44,18 @@ export default function HowWeWork() {
               </div>
             ))}
           </div>
+          <button 
+            onClick={() => document.getElementById('slider')?.scrollBy(-600, 0)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+          >
+            ←
+          </button>
+          <button 
+            onClick={() => document.getElementById('slider')?.scrollBy(600, 0)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
+          >
+            →
+          </button>
         </div>
       </div>
     </div>
