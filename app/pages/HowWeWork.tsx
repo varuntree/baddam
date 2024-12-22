@@ -1,13 +1,10 @@
-
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import StepCard from "../components/StepCard";
-import { AnimatePresence, motion } from "framer-motion";
 
 export default function HowWeWork() {
-  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentArrangement, setCurrentArrangement] = useState([2, 0, 1]); // [left, middle, right]
   
   const steps = [
     {
@@ -28,87 +25,52 @@ export default function HowWeWork() {
     setCurrentArrangement(prev => [(prev[0] + 1) % 3, (prev[1] + 1) % 3, (prev[2] + 1) % 3]);
   };
 
-  const handlePrev = () => {
-    setCurrentArrangement(prev => [(prev[0] + 2) % 3, (prev[1] + 2) % 3, (prev[2] + 2) % 3]);
-  };
-
   return (
     <div className="min-h-screen bg-black py-24">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="container mx-auto px-4"
-      >
-        <div className="mb-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <motion.h1 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-5xl font-bold text-white md:w-1/2"
-          >
+      <div className="container mx-auto px-4">
+        <div className="mb-16 flex items-center justify-between gap-8">
+          <h1 className="text-5xl font-bold text-white w-1/2">
             AI that works for everyone.
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-xl text-white/70 md:w-1/2"
-          >
+          </h1>
+          <p className="text-xl text-white/70 w-1/2">
             Delivering AI that works for everyone, from individuals to large enterprises.
-          </motion.p>
+          </p>
         </div>
         
         <div className="relative">
-          <motion.div 
-            className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth"
-            ref={sliderRef}
-          >
-            <AnimatePresence mode="wait">
-              {currentArrangement.map((stepIndex, position) => (
-                <motion.div
-                  key={position}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut"
-                  }}
-                  className="snap-center shrink-0 w-[90vw] md:w-[600px]"
-                >
-                  <StepCard
-                    stepNumber={stepIndex + 1}
-                    title={steps[stepIndex].title}
-                    description={steps[stepIndex].description}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <div className="flex overflow-x-hidden gap-8 pb-8 snap-x snap-mandatory scroll-smooth transition-all duration-500 ease-in-out" id="slider" ref={(el) => {
+            if (el) {
+              setTimeout(() => {
+                el.scrollLeft = (el.scrollWidth - el.clientWidth) / 3;
+              }, 100);
+            }
+          }}>
+            {currentArrangement.map((stepIndex, position) => (
+              <div key={position} className="snap-center shrink-0 w-[90vw] md:w-[600px]">
+                <StepCard
+                  stepNumber={stepIndex + 1}
+                  title={steps[stepIndex].title}
+                  description={steps[stepIndex].description}
+                />
+              </div>
+            ))}
+          </div>
           <div className="flex justify-center gap-4 mt-8">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handlePrev}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
+            <button 
+              onClick={() => document.getElementById('slider')?.scrollBy({ left: -600, behavior: 'smooth' })}
+              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               ←
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            </button>
+            <button 
               onClick={handleNext}
-              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300"
+              className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
             >
               →
-            </motion.button>
+            </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
