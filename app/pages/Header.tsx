@@ -1,9 +1,45 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import CornerEdgeCard from '../components/CornerEdgeCard';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const matchMediaQuery = window.matchMedia('(min-width: 768px)');
+        
+        const setupAnimation = (matches: boolean) => {
+            if (imageRef.current) {
+                gsap.to(imageRef.current, {
+                    scrollTrigger: {
+                        trigger: imageRef.current,
+                        start: "top 60%",
+                        end: "bottom 40%",
+                        scrub: 1,
+                    },
+                    rotateX: matches ? 30 : 20,
+                    scale: matches ? 1.1 : 1.05,
+                    transformPerspective: 1000,
+                    transformOrigin: "center center",
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            }
+        };
+
+        setupAnimation(matchMediaQuery.matches);
+        matchMediaQuery.addEventListener('change', (e) => setupAnimation(e.matches));
+
+        return () => {
+            matchMediaQuery.removeEventListener('change', (e) => setupAnimation(e.matches));
+        };
+    }, []);
+
     return (
         <div className="relative min-h-screen w-full">
             <video 
@@ -28,6 +64,16 @@ export default function Header() {
                     <button className="px-6 py-3 border-2 border-primary text-white rounded-3xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
                         Learn More
                     </button>
+                </div>
+                <div 
+                    ref={imageRef} 
+                    className="mt-12 w-full max-w-3xl mx-auto p-4 transform-gpu"
+                >
+                    <img 
+                        src="/header-automation.png" 
+                        alt="Automation Header" 
+                        className="w-full h-auto rounded-3xl shadow-2xl"
+                    />
                 </div>
             </div>
         </div>
