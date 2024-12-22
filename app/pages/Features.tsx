@@ -8,21 +8,21 @@ import FeatureCard from "../components/FeatureCard";
 export default function Features() {
   const features = [
     {
-      title: "Find & understand information",
+      title: "Conversational AI",
       description:
-        "Easily find and understand the information you need with our advanced search and explore capabilities.",
+        "Empower your business with intelligent chatbots and virtual assistants that deliver human-like interactions across websites, social media, and messaging platforms. These AI-driven tools handle customer queries, streamline support, and boost engagement by providing instant, 24/7 assistance. By reducing response times and personalizing interactions, Conversational AI ensures an exceptional customer experience while freeing up your team to focus on higher-value tasks.",
       imageSrc: "/conversational.png",
     },
     {
-      title: "Create & summarize content",
+      title: "Reputation Management AI",
       description:
-        "Generate and summarize content efficiently using AI-powered tools.",
+        "Take control of your brand's image with advanced AI tools designed to monitor, analyze, and respond to online reviews and feedback. Reputation Management AI identifies trends, highlights critical areas for improvement, and generates actionable insights. By maintaining a positive digital presence, you'll foster trust with your audience and make data-driven decisions to continuously enhance your services.",
       imageSrc: "/reputational.png",
     },
     {
-      title: "Automate work",
+      title: "Workflow Optimization AI",
       description:
-        "Streamline your workflow with intelligent automation solutions.",
+        "Streamline your business processes and supercharge productivity with Workflow Optimization AI. By automating repetitive tasks and providing actionable insights, this solution helps you save time and resources. Whether it's scheduling, data analysis, or task management, Workflow Optimization AI eliminates inefficiencies and creates a seamless operational flow, enabling your team to focus on strategic initiatives.",
       imageSrc: "/workflow.png",
     },
   ];
