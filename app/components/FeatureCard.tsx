@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -41,7 +40,7 @@ export default function FeatureCard({ title, description, imageSrc }: FeatureCar
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <p className="text-gray-100 text-center">{description}</p>
+            <p className="text-gray-100 text-center line-clamp-[12]">{description}</p>
           </div>
         </div>
       </div>
