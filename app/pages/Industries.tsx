@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -58,9 +57,9 @@ export default function Industries() {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0" />
-      
+
       {/* Side Card */}
-      <div className="absolute top-0 bottom-0 left-0 pt-8 md:w-1/4 w-full bg-white/10 backdrop-blur-sm md:backdrop-blur-md border-r border-white/20">
+      <div className="absolute top-0 bottom-0 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-sm md:backdrop-blur-md border-r border-white/20">
         <div className="p-6">
           <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
           <div className="space-y-2">
@@ -77,7 +76,7 @@ export default function Industries() {
                     </span>
                   </div>
                 </button>
-                <div 
+                <div
                   className={`px-2 overflow-hidden transition-all duration-300 ease-in-out ${
                     openIndex === index ? "max-h-32 opacity-100 pb-4" : "max-h-0 opacity-0"
                   }`}
