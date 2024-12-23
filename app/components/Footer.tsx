@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative backdrop-blur-md bg-black/60 text-white py-20 overflow-hidden">
+    <footer className="relative backdrop-blur-md bg-black/60 text-white py-16 md:py-24 overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-orange-500/30 via-orange-400/20 to-transparent blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-white/10 via-white/5 to-transparent blur-3xl"></div>
       <div className="container mx-auto px-4">
