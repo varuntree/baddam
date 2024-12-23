@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -40,8 +39,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-black/10 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed w-full z-50 bg-black/10 backdrop-blur-sm px-6 md:px-8 lg:px-12"> {/* Added padding here */}
+      <div className="max-w-7xl mx-auto"> {/* Removed unnecessary px-4 sm:px-6 lg:px-8 */}
         <div className="flex items-center justify-between h-16">
           {/* Company Name */}
           <div className="flex-shrink-0">
@@ -118,7 +117,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-black/30 backdrop-blur-md`}>
+      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-black/30 backdrop-blur-md px-6 md:px-8 lg:px-12`}> {/* Added padding here */}
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
             <Link

@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="relative backdrop-blur-md bg-black/60 text-white py-16 md:py-24 overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-orange-500/30 via-orange-400/20 to-transparent blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-white/10 via-white/5 to-transparent blur-3xl"></div>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12">
         {/* Call to Action */}
         <div className="text-center mb-16">
           <p className="text-primary text-sm mb-2">[ INTERESTED? ]</p>
