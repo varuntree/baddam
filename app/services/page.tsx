@@ -76,10 +76,10 @@ export default function Services() {
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-12">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
             <span className="text-primary">Ways</span> We Can Work Together
           </h2>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-black max-w-3xl mx-auto">
             We are creating a world where everyone has the coach and mentor they need
             to unlock their potential and fulfill their purpose
           </p>
@@ -91,7 +91,7 @@ export default function Services() {
               key={service.id}
               ref={el => cardsRef.current[index] = el}
               className={`group relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 ${
-                hoveredCardIndex === null || hoveredCardIndex === index ? 'opacity-100 z-10' : 'opacity-0'
+                hoveredCardIndex === null || hoveredCardIndex === index ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
               }`}
               onMouseEnter={() => setHoveredCardIndex(index)}
               onMouseLeave={() => setHoveredCardIndex(null)}
@@ -99,9 +99,9 @@ export default function Services() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
               <div className="absolute inset-0 bg-primary/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative h-[400px] p-6 flex flex-col justify-end">
-                <p className="text-white/60 mb-2">0{index + 1}</p>
-                <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-white/80">{service.description}</p>
+                <p className="text-black/60 mb-2">0{index + 1}</p>
+                <h3 className="text-2xl font-bold text-black mb-3">{service.title}</h3>
+                <p className="text-black/80">{service.description}</p>
               </div>
             </div>
           ))}
