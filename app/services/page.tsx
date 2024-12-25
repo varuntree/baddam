@@ -67,7 +67,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {hoveredCardIndex !== null && (
         <div 
           className="absolute inset-0 transition-opacity duration-500"
@@ -82,10 +82,10 @@ export default function Services() {
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-12">
         <div className={`text-center mb-20 transition-opacity duration-300 ${hoveredCardIndex !== null ? 'opacity-0' : 'opacity-100'}`}>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black">
             Our <span className="text-primary">Services</span>
           </h2>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-black/70 max-w-3xl mx-auto">
             Empowering businesses with cutting-edge AI solutions
           </p>
         </div>
