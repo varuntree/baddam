@@ -7,6 +7,14 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 const services = [
   {
+    id: 0,
+    title: "What We Offer",
+    description:
+      "Your company tagline or mission statement goes here. Describe what makes your services unique and valuable.",
+    category: "00",
+    imagePath: "/workflow.png",
+  },
+  {
     id: 1,
     title: "Conversational AI",
     description:
@@ -119,21 +127,6 @@ export default function Services() {
 
       {/* MAIN CONTENT */}
       <div className="relative z-10">
-        {/* Header Section */}
-        <div
-          ref={headerRef}
-          className="flex flex-col items-center justify-center h-screen px-6 text-center"
-        >
-          <p className="text-orange-500 text-sm md:text-base mb-4">OUR SERVICES</p>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            What We Offer
-          </h1>
-          <p className="text-white/70 max-w-xl mx-auto text-sm md:text-base">
-            Your company tagline or mission statement goes here. Describe
-            what makes your services unique and valuable.
-          </p>
-        </div>
-
         {/* Each service as a full-screen "section/card" */}
         {services.map((service, index) => (
           <section
