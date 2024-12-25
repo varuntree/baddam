@@ -12,7 +12,7 @@ const services = [
     description:
       "Your company tagline or mission statement goes here. Describe what makes your services unique and valuable.",
     category: "00",
-    imagePath: "/workflow.png",
+    imagePath: "/test.png",
   },
   {
     id: 1,
