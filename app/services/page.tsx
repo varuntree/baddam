@@ -67,7 +67,12 @@ export default function Services() {
         <div 
           className="fixed inset-0 z-0"
           style={{
-            backgroundImage: "url('/test.png')",
+            backgroundImage: `url('${
+              hoveredCardIndex === 0 ? '/test.png' :
+              hoveredCardIndex === 1 ? '/workflow.png' :
+              hoveredCardIndex === 2 ? '/conversational.png' :
+              '/reputational.png'
+            }')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -99,9 +104,9 @@ export default function Services() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
               <div className="absolute inset-0 bg-primary/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative h-[400px] p-6 flex flex-col justify-end">
-                <p className="text-black/60 mb-2">0{index + 1}</p>
-                <h3 className="text-2xl font-bold text-black mb-3">{service.title}</h3>
-                <p className="text-black/80">{service.description}</p>
+                <p className={`mb-2 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/60' : 'text-black/60'}`}>0{index + 1}</p>
+                <h3 className={`text-2xl font-bold mb-3 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white' : 'text-black'}`}>{service.title}</h3>
+                <p className={`transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/80' : 'text-black/80'}`}>{service.description}</p>
               </div>
             </div>
           ))}
