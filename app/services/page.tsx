@@ -1,40 +1,55 @@
 
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const services = [
   {
     id: 1,
     title: "In-Person Events",
     description: "Immersive experiences to grow your leadership and your team in a collaborative way",
-    category: "01"
+    category: "01",
+    imagePath: "/conversational.png"
   },
   {
     id: 2,
     title: "Training Programs",
     description: "Leadership training, business mentoring, and masterclasses",
-    category: "02"
+    category: "02",
+    imagePath: "/workflow.png"
   },
   {
     id: 3,
     title: "Executive Coaching",
     description: "1:1 coaching from Ryan and his executive team helps employees to drive growth",
-    category: "03"
+    category: "03",
+    imagePath: "/reputational.png"
   },
   {
     id: 4,
     title: "AI-powered Coaching",
     description: "Scaling the coaching industry globally with groundbreaking AI solutions",
-    category: "04"
+    category: "04",
+    imagePath: "/robo.jpg"
   }
 ];
 
 export default function Services() {
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
   return (
-    <div className="min-h-screen bg-black py-24">
-      <div className="w-full px-6 md:px-12">
-        {/* Header Section */}
+    <div className="min-h-screen bg-black py-24 relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-500 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${activeImage || ''})`,
+          opacity: activeImage ? 0.3 : 0
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 w-full px-6 md:px-12">
         <div className="text-center mb-20">
           <p className="text-orange-500 mb-4">WAYS</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -46,18 +61,17 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
             <div
               key={service.id}
               className="group relative p-6 rounded-3xl border border-white/10 overflow-hidden transition-all duration-500 hover:scale-105"
+              onMouseEnter={() => setActiveImage(service.imagePath)}
+              onMouseLeave={() => setActiveImage(null)}
             >
-              {/* Background Effects */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900 opacity-80 group-hover:opacity-0 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-orange-600/30 backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900 opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-orange-600/30 backdrop-blur-xl opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
               
-              {/* Content */}
               <div className="relative z-10">
                 <span className="text-orange-500 text-sm">{service.category}</span>
                 <h3 className="text-xl font-bold text-white mt-2 mb-4">{service.title}</h3>
