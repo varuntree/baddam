@@ -3,6 +3,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import InfoCard from '../components/InfoCard';
 
 const teamMembers = [
@@ -56,31 +57,37 @@ const coreValues = [
 export default function AboutUs() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin();
+    gsap.registerPlugin(ScrollTrigger);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const moveX = clientX - window.innerWidth / 2;
-      const moveY = clientY - window.innerHeight / 2;
-      const offset = 15;
+    cardsRef.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(card, 
+          { y: 0 },
+          {
+            y: -50,
+            scrollTrigger: {
+              trigger: card,
+              start: "top center",
+              end: "bottom top",
+              scrub: 1.5,
+            }
+          }
+        );
+      }
+    });
 
-      cardsRef.current.forEach((card) => {
-        if (card) {
-          gsap.to(card, {
-            duration: 0.5,
-            x: moveX / offset,
-            y: moveY / offset,
-            rotation: moveX / (offset * 4),
-            ease: "power2.out"
-          });
-        }
+    if (videoRef.current) {
+      gsap.to(videoRef.current, {
+        scrollTrigger: {
+          scrub: 1.5
+        },
+        objectPosition: "center 50%",
+        ease: "none"
       });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    }
   }, []);
 
   useEffect(() => {
@@ -93,6 +100,7 @@ export default function AboutUs() {
   return (
     <div className="min-h-screen relative">
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
         src="/headerVideo.mp4"
         autoPlay
