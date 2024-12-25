@@ -11,10 +11,10 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-        <Features />
-        <HowWeWork />
-        <Industries />
-        <AboutUs />
+      <Features />
+      <HowWeWork />
+      <Industries />
+      <AboutUs />
       <Footer />
     </div>
   );
