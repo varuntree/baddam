@@ -42,19 +42,25 @@ const services: ServiceCard[] = [
 export default function Services() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
+  const bgImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Animate cards on mount
     cardsRef.current.forEach((card, index) => {
       if (card) {
         gsap.fromTo(card, 
-          { y: 50, opacity: 0 },
+          { 
+            y: 50, 
+            opacity: 0 
+          },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.8,
             delay: index * 0.2,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: card,
               start: "top bottom",
@@ -66,19 +72,31 @@ export default function Services() {
     });
   }, []);
 
+  useEffect(() => {
+    if (bgImageRef.current) {
+      if (hoveredCardIndex !== null) {
+        gsap.to(bgImageRef.current, {
+          opacity: 0.3,
+          duration: 0.6,
+          ease: "power2.inOut",
+          backgroundImage: `url('${services[hoveredCardIndex].bgImage}')`
+        });
+      } else {
+        gsap.to(bgImageRef.current, {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.inOut"
+        });
+      }
+    }
+  }, [hoveredCardIndex]);
+
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
-      {hoveredCardIndex !== null && (
-        <div 
-          className="absolute inset-0 transition-opacity duration-500"
-          style={{
-            backgroundImage: `url('${services[hoveredCardIndex].bgImage}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.3
-          }}
-        />
-      )}
+      <div 
+        ref={bgImageRef}
+        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 opacity-0"
+      />
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-12">
         <div className={`text-center mb-20 transition-opacity duration-300 ${hoveredCardIndex !== null ? 'opacity-0' : 'opacity-100'}`}>
@@ -90,24 +108,24 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <div
               key={service.id}
               ref={el => cardsRef.current[index] = el}
-              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 bg-white flex-1 ${
                 hoveredCardIndex === null ? 'opacity-100 scale-100' :
-                hoveredCardIndex === index ? 'opacity-100 scale-110 z-20' : 'opacity-0 scale-95 pointer-events-none'
+                hoveredCardIndex === index ? 'opacity-100 scale-105 z-20' : 'opacity-50 scale-95'
               }`}
               onMouseEnter={() => setHoveredCardIndex(index)}
               onMouseLeave={() => setHoveredCardIndex(null)}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
-              <div className="absolute inset-0 bg-primary/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative h-[400px] p-6 flex flex-col justify-end">
-                <p className="mb-2 text-white/60">0{index + 1}</p>
-                <h3 className="text-2xl font-bold mb-3 text-white">{service.title}</h3>
-                <p className="text-white/80">{service.description}</p>
+              <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${hoveredCardIndex === index ? 'to-black/60' : 'to-transparent'} transition-colors duration-300`} />
+              <div className={`absolute inset-0 ${hoveredCardIndex === index ? 'bg-primary/20 backdrop-blur-md' : ''} transition-all duration-300`} />
+              <div className="relative h-[350px] p-6 flex flex-col justify-end">
+                <p className={`mb-2 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/60' : 'text-black/60'}`}>0{index + 1}</p>
+                <h3 className={`text-2xl font-bold mb-3 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white' : 'text-black'}`}>{service.title}</h3>
+                <p className={`transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/80' : 'text-black/80'}`}>{service.description}</p>
               </div>
             </div>
           ))}
