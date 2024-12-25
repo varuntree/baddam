@@ -27,7 +27,7 @@ export default function Features() {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-24 rounded-3xl overflow-hidden">
+    <div className="min-h-screen bg-gray-300 py-24 rounded-3xl overflow-hidden">
       <div className="w-full px-6 md:px-12">
         <div className="mb-16">
           <h2 className="text-4xl font-bold text-black mb-4">FEATURES</h2>
