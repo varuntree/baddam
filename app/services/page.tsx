@@ -1,7 +1,9 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 const services = [
   {
@@ -9,7 +11,7 @@ const services = [
     title: "In-Person Events",
     description: "Immersive experiences to grow your leadership and your team in a collaborative way",
     category: "01",
-    imagePath: "/test.png"
+    imagePath: "/conversational.png"
   },
   {
     id: 2,
@@ -36,10 +38,44 @@ const services = [
 
 export default function Services() {
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Header animation
+    gsap.from(headerRef.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+        end: "top 20%",
+        scrub: 1
+      }
+    });
+
+    // Cards stagger animation
+    cardsRef.current.forEach((card, index) => {
+      gsap.from(card, {
+        x: index % 2 === 0 ? -100 : 100,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          end: "top 65%",
+          scrub: 1
+        }
+      });
+    });
+
+  }, []);
 
   return (
     <div className="min-h-screen bg-black py-24 relative">
-      {/* Background Image */}
       <div 
         className="absolute inset-0 transition-opacity duration-500 bg-cover bg-center"
         style={{ 
@@ -48,9 +84,8 @@ export default function Services() {
         }}
       />
       
-      {/* Content */}
       <div className="relative z-10 w-full px-6 md:px-12">
-        <div className="text-center mb-20">
+        <div ref={headerRef} className="text-center mb-20">
           <p className="text-orange-500 mb-4">WAYS</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             We Can Work Together
@@ -62,12 +97,27 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.id}
+              ref={el => cardsRef.current[index] = el}
               className="group relative p-6 rounded-3xl border border-white/10 overflow-hidden transition-all duration-500 hover:scale-105"
-              onMouseEnter={() => setActiveImage(service.imagePath)}
-              onMouseLeave={() => setActiveImage(null)}
+              onMouseEnter={() => {
+                setActiveImage(service.imagePath);
+                gsap.to(cardsRef.current[index], {
+                  scale: 1.05,
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
+              }}
+              onMouseLeave={() => {
+                setActiveImage(null);
+                gsap.to(cardsRef.current[index], {
+                  scale: 1,
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900 opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-orange-600/30 backdrop-blur-xl opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
