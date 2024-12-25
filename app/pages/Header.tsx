@@ -70,7 +70,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-screen pb-8">
+    <div className="relative min-h-screen w-full pb-8">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay
