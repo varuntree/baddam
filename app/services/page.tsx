@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useLayoutEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -99,13 +100,19 @@ export default function Services() {
   return (
     <div className="relative w-full overflow-hidden">
       {/* FIXED BACKGROUND IMAGE */}
-      <div
-        className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: activeImage ? `url(${activeImage})` : "none",
-          transition: "background-image 0.5s ease-in-out",
-        }}
-      />
+      {activeImage && (
+        <div className="fixed inset-0 -z-10">
+          <Image
+            src={activeImage}
+            alt="Service background"
+            fill
+            quality={100}
+            priority
+            className="object-cover transition-opacity duration-500"
+            sizes="100vw"
+          />
+        </div>
+      )}
 
       {/* DARK OVERLAY (to help text stand out) */}
       <div className="fixed inset-0 -z-0 bg-black/70" />
