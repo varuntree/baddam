@@ -94,7 +94,7 @@ export default function Services() {
       <div className="fixed inset-0 -z-0 bg-black/70" />
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 md:flex md:flex-col">
+      <div className="relative z-10">
         {/* Header Section */}
         <div
           ref={headerRef}
@@ -111,15 +111,13 @@ export default function Services() {
         </div>
 
         {/* Each service as a full-screen "section/card" */}
-        <div className="md:flex md:overflow-x-auto md:snap-x md:snap-mandatory">
-          {services.map((service, index) => (
-            <section
-              key={service.id}
-              ref={(el) => (cardRefs.current[index] = el)}
-              className="h-screen flex flex-col items-center justify-center px-6 
-                         text-center border-t border-white/10
-                         md:min-w-screen md:snap-center md:snap-always"
-            >
+        {services.map((service, index) => (
+          <section
+            key={service.id}
+            ref={(el) => (cardRefs.current[index] = el)}
+            className="h-screen flex flex-col items-center justify-center px-6 
+                       text-center border-t border-white/10"
+          >
             <span className="text-orange-500 text-sm mb-2">
               {service.category}
             </span>
@@ -141,8 +139,7 @@ export default function Services() {
               </button>
             </div>
           </section>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );
