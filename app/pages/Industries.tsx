@@ -69,7 +69,7 @@ export default function Industries() {
       </div>
 
       {/* Side Card */}
-      <div className="absolute top-0 bottom-0 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-lg md:backdrop-blur-2xl border-r border-white/20">
+      <div className="absolute top-0 bottom-0 py-8 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-lg md:backdrop-blur-2xl border-r border-white/20">
         <div className="px-6 md:px-12 py-6">
           <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
           <div className="space-y-2">
@@ -99,6 +99,9 @@ export default function Industries() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="py-16">
+        {/* Existing content */}
       </div>
     </div>
   );

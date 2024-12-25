@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -38,38 +37,40 @@ export default function Features() {
           </p>
         </div>
         
-        {/* First Row */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-8">
-          <div className="lg:w-1/4">
-            <h3 className="text-3xl font-bold text-secondary mb-4 lg:mb-0">Solutions</h3>
-          </div>
-          <div className="lg:w-3/4">
-            <FeatureCard
-              key={0}
-              title={features[0].title}
-              description={features[0].description}
-              imageSrc={features[0].imageSrc}
-            />
-          </div>
-        </div>
-
-        {/* Second Row */}
-        <div className="lg:ml-[25%] mt-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.slice(1).map((feature, index) => (
+        <div className="py-16">
+          {/* First Row */}
+          <div className="flex flex-col lg:flex-row gap-8 mb-8">
+            <div className="lg:w-1/4">
+              <h3 className="text-3xl  font-bold text-black mb-4 lg:mb-0">Solutions</h3>
+            </div>
+            <div className="lg:w-3/4">
               <FeatureCard
-                key={index + 1}
-                title={feature.title}
-                description={feature.description}
-                imageSrc={feature.imageSrc}
+                key={0}
+                title={features[0].title}
+                description={features[0].description}
+                imageSrc={features[0].imageSrc}
               />
-            ))}
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center mt-16">
-          <Link href="/solutions" className="px-8 py-3 bg-black text-white rounded-3xl hover:bg-black/80 transition-colors">
-            More Solutions
-          </Link>
+
+          {/* Second Row */}
+          <div className="lg:ml-[25%] mt-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              {features.slice(1).map((feature, index) => (
+                <FeatureCard
+                  key={index + 1}
+                  title={feature.title}
+                  description={feature.description}
+                  imageSrc={feature.imageSrc}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-center mt-16">
+            <Link href="/solutions" className="px-8 py-3 bg-black text-white rounded-3xl hover:bg-black/80 transition-colors">
+              More Solutions
+            </Link>
+          </div>
         </div>
       </div>
     </div>

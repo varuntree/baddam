@@ -85,25 +85,27 @@ export default function Header() {
 
       <Navbar />
 
-      <div className="relative z-10 w-full px-6 md:px-12 flex flex-col items-center justify-center min-h-screen pt-24">
-        <CornerEdgeCard highlightedWords={["Businesses", "Automation"]} />
-        <div className="flex justify-center gap-4 mt-8">
-          <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-white/90 transition-colors">
-            Get Started
-          </button>
-          <button className="px-6 py-3 border-2 border-primary text-white rounded-3xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
-            Learn More
-          </button>
-        </div>
-        <div
-          ref={imageRef}
-          className="mt-12 w-full max-w-3xl mx-auto p-4 transform-gpu"
-        >
-          {/* <img
-            src="/header-automation.png"
-            alt="Automation Header"
-            className="w-[70%] mx-auto h-auto rounded-3xl shadow-2xl"
-          /> */}
+      <div className="py-16">
+        <div className="relative z-10 w-full px-6 md:px-12 flex flex-col items-center justify-center min-h-screen pt-24">
+          <CornerEdgeCard highlightedWords={["Businesses", "Automation"]} />
+          <div className="flex justify-center gap-4 mt-8">
+            <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-white/90 transition-colors">
+              Get Started
+            </button>
+            <button className="px-6 py-3 border-2 border-primary text-white rounded-3xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
+              Learn More
+            </button>
+          </div>
+          <div
+            ref={imageRef}
+            className="mt-12 w-full max-w-3xl mx-auto p-4 transform-gpu"
+          >
+            {/* <img
+              src="/header-automation.png"
+              alt="Automation Header"
+              className="w-[70%] mx-auto h-auto rounded-3xl shadow-2xl"
+            /> */}
+          </div>
         </div>
       </div>
     </div>

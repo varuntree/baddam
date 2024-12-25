@@ -58,30 +58,21 @@ export default function AboutUs() {
 
   useEffect(() => {
     gsap.registerPlugin();
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const moveX = clientX - window.innerWidth / 2;
-      const moveY = clientY - window.innerHeight / 2;
-      const offset = 15;
-
-      cardsRef.current.forEach((card) => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      cardsRef.current.forEach((card, i) => {
         if (card) {
+          const speed = 0.1 + i * 0.05;
           gsap.to(card, {
-            duration: 0.5,
-            x: moveX / offset,
-            y: moveY / offset,
-            rotation: moveX / (offset * 4),
+            y: scrollTop * speed,
             ease: "power2.out"
           });
         }
       });
     };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -108,99 +99,101 @@ export default function AboutUs() {
       {/* Glassmorphic Overlay */}
       <div className="min-h-screen bg-black/50 backdrop-blur-lg py-24">
         <div className="w-full px-6 md:px-12">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              About Us
-            </h1>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              We are a team of passionate individuals dedicated to revolutionizing the way
-              businesses interact with AI technology.
-            </p>
-          </div>
-
-          {/* Mission & Vision Section */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div 
-              ref={el => {cardsRef.current[0] = el}}
-              className="bg-neutral-900/80 p-8 rounded-3xl transform-gpu"
-            >
-              <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
-              <p className="text-white/70">
-                We aim to empower businesses by transforming their operations through AI innovation,
-                ensuring they are equipped for the challenges of tomorrow.
+          <div className="py-16">
+            {/* Header Section */}
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                About Us
+              </h1>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                We are a team of passionate individuals dedicated to revolutionizing the way
+                businesses interact with AI technology.
               </p>
             </div>
-            <div 
-              ref={el => {cardsRef.current[1] = el}}
-              className="bg-neutral-900/80 p-8 rounded-3xl transform-gpu"
-            >
-              <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
-              <p className="text-white/70">
-                To revolutionize industries by making AI an integral, accessible, and impactful
-                part of every business.
-              </p>
-            </div>
-          </div>
 
-          {/* Core Values Section */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Core Values</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {coreValues.map((value, index) => (
-                <div 
-                  key={index}
-                  ref={el => {cardsRef.current[index + 2] = el}}
-                  className="bg-neutral-900/80 p-8 rounded-3xl transform-gpu"
-                >
-                  <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
-                  <p className="text-white/70">{value.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Story Section */}
-          <div 
-            ref={el => {cardsRef.current[5] = el}}
-            className="mb-16 bg-neutral-900/80 p-8 rounded-3xl transform-gpu"
-          >
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Story</h2>
-            <p className="text-white/70 text-center max-w-4xl mx-auto">
-              Founded with the belief that AI can empower businesses of all sizes, we've grown
-              into a leading agency delivering impactful solutions for industries worldwide.
-              Our journey began with a simple mission: to make AI accessible and practical for
-              every business, regardless of their size or technical expertise.
-            </p>
-          </div>
-
-          {/* Leadership Team Section */}
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Leadership Team</h2>
-            <div className="relative overflow-hidden py-8">
+            {/* Mission & Vision Section */}
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
               <div 
-                className="flex gap-8 transition-transform duration-500"
-                style={{
-                  transform: `translateX(-${scrollPosition}px)`,
-                  width: `${teamMembers.length * 400}px`
-                }}
+                ref={el => {cardsRef.current[0] = el}}
+                className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl transform-gpu border border-white/10 shadow-xl"
               >
-                {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
-                  <div
+                <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
+                <p className="text-white/70">
+                  We aim to empower businesses by transforming their operations through AI innovation,
+                  ensuring they are equipped for the challenges of tomorrow.
+                </p>
+              </div>
+              <div 
+                ref={el => {cardsRef.current[1] = el}}
+                className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl transform-gpu border border-white/10 shadow-xl"
+              >
+                <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
+                <p className="text-white/70">
+                  To revolutionize industries by making AI an integral, accessible, and impactful
+                  part of every business.
+                </p>
+              </div>
+            </div>
+
+            {/* Core Values Section */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">Core Values</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {coreValues.map((value, index) => (
+                  <div 
                     key={index}
-                    ref={el => {cardsRef.current[index + 6] = el}}
-                    className="flex-shrink-0 w-[350px] bg-neutral-900/80 rounded-3xl overflow-hidden transform-gpu"
+                    ref={el => {cardsRef.current[index + 2] = el}}
+                    className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl transform-gpu border border-white/10 shadow-xl"
                   >
-                    <div className="h-[400px] relative bg-neutral-800">
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
-                      <p className="text-primary mb-2">{member.role}</p>
-                      <p className="text-white/70 text-sm">{member.bio}</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
+                    <p className="text-white/70">{value.description}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Story Section */}
+            <div 
+              ref={el => {cardsRef.current[5] = el}}
+              className="mb-16 bg-white/10 backdrop-blur-xl p-8 rounded-3xl transform-gpu border border-white/10 shadow-xl"
+            >
+              <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Story</h2>
+              <p className="text-white/70 text-center max-w-4xl mx-auto">
+                Founded with the belief that AI can empower businesses of all sizes, we've grown
+                into a leading agency delivering impactful solutions for industries worldwide.
+                Our journey began with a simple mission: to make AI accessible and practical for
+                every business, regardless of their size or technical expertise.
+              </p>
+            </div>
+
+            {/* Leadership Team Section */}
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">Leadership Team</h2>
+              <div className="relative overflow-hidden py-8">
+                <div 
+                  className="flex gap-8 transition-transform duration-500"
+                  style={{
+                    transform: `translateX(-${scrollPosition}px)`,
+                    width: `${teamMembers.length * 400}px`
+                  }}
+                >
+                  {[...teamMembers, ...teamMembers, ...teamMembers].map((member, index) => (
+                    <div
+                      key={index}
+                      ref={el => {cardsRef.current[index + 6] = el}}
+                      className="flex-shrink-0 w-[350px] bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden transform-gpu border border-white/10 shadow-xl"
+                    >
+                      <div className="h-[400px] relative bg-white/5">
+                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
+                        <p className="text-primary mb-2">{member.role}</p>
+                        <p className="text-white/70 text-sm">{member.bio}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
