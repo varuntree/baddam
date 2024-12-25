@@ -7,34 +7,51 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 const services = [
   {
     id: 1,
-    title: "In-Person Events",
+    title: "Conversational AI",
     description:
-      "Immersive experiences to grow your leadership and your team in a collaborative way",
+      "Transform customer interactions with intelligent chatbots and virtual assistants that deliver human-like interactions in real time. Seamlessly integrate across platforms for 24/7 support.",
     category: "01",
-    imagePath: "/test.png",
+    imagePath: "/conversational.png",
   },
   {
     id: 2,
-    title: "Training Programs",
-    description: "Leadership training, business mentoring, and masterclasses",
+    title: "Content AI Creation",
+    description: 
+      "Say goodbye to writer's block with our AI-driven content creation tools that generate high-quality, personalized materials for your marketing needs.",
     category: "02",
     imagePath: "/workflow.png",
   },
   {
     id: 3,
-    title: "Executive Coaching",
+    title: "Social Media Automation AI",
     description:
-      "1:1 coaching from Ryan and his executive team helps employees to drive growth",
+      "Streamline your online presence with AI-powered social media automation tools. Focus on building meaningful connections while AI handles routine tasks.",
     category: "03",
     imagePath: "/reputational.png",
   },
   {
     id: 4,
-    title: "AI-powered Coaching",
+    title: "Construction AI Solutions",
     description:
-      "Scaling the coaching industry globally with groundbreaking AI solutions",
+      "Optimize safety, efficiency, and resource management in construction with AI-driven solutions for real-time monitoring and predictive analytics.",
     category: "04",
     imagePath: "/robo.jpg",
+  },
+  {
+    id: 5,
+    title: "Real Estate APS",
+    description:
+      "Transform client connections with Automated Prospecting Systems designed specifically for real estate professionals.",
+    category: "05",
+    imagePath: "/workflow.png",
+  },
+  {
+    id: 6,
+    title: "Web Crawler AI",
+    description:
+      "Harness the power of data with AI-driven web crawlers that automate the collection and analysis of online information for actionable insights.",
+    category: "06",
+    imagePath: "/reputational.png",
   },
 ];
 
