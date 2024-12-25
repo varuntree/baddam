@@ -4,34 +4,32 @@ import React, { useState, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const services = [
   {
     id: 1,
-    title: "Conversational AI",
-    description: "Advanced chatbots and virtual assistants that transform customer interactions with natural language processing",
+    title: "In-Person Events",
+    description: "Immersive experiences to grow your leadership and your team in a collaborative way",
     category: "01",
     imagePath: "/conversational.png"
   },
   {
     id: 2,
-    title: "Process Automation",
-    description: "Streamline your workflows with intelligent automation solutions that boost efficiency",
+    title: "Training Programs",
+    description: "Leadership training, business mentoring, and masterclasses",
     category: "02",
     imagePath: "/workflow.png"
   },
   {
     id: 3,
-    title: "Data Analytics",
-    description: "Turn your data into actionable insights with our advanced analytics and reporting tools",
+    title: "Executive Coaching",
+    description: "1:1 coaching from Ryan and his executive team helps employees to drive growth",
     category: "03",
     imagePath: "/reputational.png"
   },
   {
     id: 4,
-    title: "Custom AI Solutions",
-    description: "Tailored artificial intelligence solutions designed specifically for your business needs",
+    title: "AI-powered Coaching",
+    description: "Scaling the coaching industry globally with groundbreaking AI solutions",
     category: "04",
     imagePath: "/robo.jpg"
   }
@@ -40,15 +38,19 @@ const services = [
 export default function Services() {
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      defaults: { duration: 1, ease: "power2.out" }
+    });
+
     // Header animation
-    gsap.from(headerRef.current, {
+    tl.from(headerRef.current, {
       y: 100,
       opacity: 0,
-      duration: 1,
       scrollTrigger: {
         trigger: headerRef.current,
         start: "top 80%",
@@ -57,41 +59,18 @@ export default function Services() {
       }
     });
 
-    // Horizontal scrolling setup
-    const container = containerRef.current;
-    const cards = cardsRef.current;
-    const totalWidth = container.scrollWidth;
-
-    gsap.to(container, {
-      x: () => -(totalWidth - window.innerWidth) + 100, // Adjust the 100 as needed for padding
-      ease: "none",
+    // Cards stagger animation
+    tl.from(cardsRef.current, {
+      x: (index: number) => (index % 2 === 0 ? -100 : 100),
+      opacity: 0,
+      stagger: 0.2,
       scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: () => `+=${totalWidth}`,
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true
+        trigger: cardsRef.current,
+        start: "top 85%",
+        end: "top 65%",
+        scrub: true
       }
-    });
-
-    // Cards sliding in animation
-    cards.forEach((card, index) => {
-      gsap.from(card, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        delay: index * 0.2,
-        scrollTrigger: {
-          trigger: card,
-          containerAnimation: ScrollTrigger.getById('horizontalScroll'),
-          start: "left center",
-          end: "right center",
-          scrub: true
-        }
-      });
-    });
+    }, "-=0.5");
 
     // Cleanup on unmount
     return () => {
@@ -99,14 +78,13 @@ export default function Services() {
     };
   }, []);
 
-  // Detect touch devices
+  // Handle touch devices by disabling hover effects
   const isTouchDevice = () => {
     return ('ontouchstart' in window || navigator.maxTouchPoints > 0);
   };
 
   return (
-    <div className="min-h-screen bg-black py-24 relative overflow-hidden">
-      {/* Background Image Overlay */}
+    <div className="min-h-screen bg-black py-24 relative">
       <div 
         className="absolute inset-0 transition-opacity duration-700 bg-cover bg-center"
         style={{ 
@@ -117,25 +95,23 @@ export default function Services() {
       />
       
       <div className="relative z-10 w-full px-6 md:px-12">
-        {/* Header Section */}
         <div ref={headerRef} className="text-center mb-20">
-          <p className="text-orange-500 mb-4 text-sm md:text-base">WAYS</p>
+          <p className="text-orange-500 mb-4 text-sm md:text-base">OUR SERVICES</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            AI Solutions for Tomorrow
+            What We Offer
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
-            Empowering businesses with cutting-edge artificial intelligence solutions
-            that drive growth and innovation
+            Your company tagline or mission statement goes here. Describe your overall 
+            value proposition and what makes your services unique.
           </p>
         </div>
 
-        {/* Horizontal Scroll Container */}
-        <div ref={containerRef} className="flex space-x-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
               key={service.id}
               ref={el => cardsRef.current[index] = el}
-              className="group relative min-w-[300px] flex-shrink-0 p-6 rounded-3xl border border-white/10 overflow-hidden transition-transform duration-500 hover:scale-105 active:scale-100"
+              className="group relative p-6 rounded-3xl border border-white/10 overflow-hidden transition-transform duration-500 hover:scale-105 active:scale-100"
               onMouseEnter={() => {
                 if (!isTouchDevice()) {
                   setActiveImage(service.imagePath);
@@ -156,12 +132,17 @@ export default function Services() {
                   });
                 }
               }}
+              onTouchStart={() => {
+                // Optional: Handle touch interactions if needed
+                setActiveImage(service.imagePath);
+              }}
+              onTouchEnd={() => {
+                setActiveImage(null);
+              }}
             >
-              {/* Background Gradients */}
               <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900 opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-orange-600/30 backdrop-blur-xl opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
               
-              {/* Card Content */}
               <div className="relative z-10">
                 <span className="text-orange-500 text-sm">{service.category}</span>
                 <h3 className="text-xl font-bold text-white mt-2 mb-4">{service.title}</h3>
