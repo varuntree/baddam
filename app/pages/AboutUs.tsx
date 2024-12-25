@@ -94,7 +94,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen w-screen relative">
       {/* Background Video */}
       <video
         id="headervideo"
@@ -106,8 +106,8 @@ export default function AboutUs() {
       ></video>
 
       {/* Glassmorphic Overlay */}
-      <div className="min-h-screen bg-black/50 backdrop-blur-lg py-24">
-        <div className="container mx-auto px-4">
+      <div className="min-h-screen bg-black/50 backdrop-blur-lg px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
