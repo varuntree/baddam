@@ -13,12 +13,13 @@ export default function CornerEdgeCard({
 }: CornerEdgeCardProps) {
   const topLeftRef = useRef<HTMLDivElement>(null);
   const bottomRightRef = useRef<HTMLDivElement>(null);
+  const businessRef = useRef<HTMLSpanElement>(null);
+  const automationRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Animate in corner icons
+    // Corner icon animations
     const tl = gsap.timeline();
 
-    // Move from off-screen to visible
     tl.to(topLeftRef.current, {
       x: "-50%",
       y: "-50%",
@@ -37,9 +38,19 @@ export default function CornerEdgeCard({
       "-=0.5"
     );
 
+    // Color-changing animation for highlighted words
+    gsap.to([businessRef.current, automationRef.current], {
+      color: "orange",
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+
     return () => {
-      // Cleanup on component unmount
+      // Cleanup animations
       tl.kill();
+      gsap.killTweensOf([businessRef.current, automationRef.current]);
     };
   }, []);
 
@@ -55,7 +66,6 @@ export default function CornerEdgeCard({
           alt="Top Left Corner Decoration"
           width={40}
           height={40}
-          // Removed placeholder & blurDataURL to avoid hydration issues
         />
       </div>
 
@@ -69,19 +79,22 @@ export default function CornerEdgeCard({
           alt="Bottom Right Corner Decoration"
           width={40}
           height={40}
-          // Removed placeholder & blurDataURL to avoid hydration issues
         />
       </div>
 
       {/* Content */}
       <div className="space-y-6 text-center">
-        <h1 className="text-3xl font-bold text-white">
+        <h1 className="text-4xl md:text-5xl font-bold text-white">
           Transforming{" "}
-          <span className="text-primary">{highlightedWords[0]}</span>{" "}
+          <span ref={businessRef} className="text-primary">
+            {highlightedWords[0]}
+          </span>{" "}
           with AI-Driven{" "}
-          <span className="text-primary">{highlightedWords[1]}</span>.
+          <span ref={automationRef} className="text-primary">
+            {highlightedWords[1]}
+          </span>.
         </h1>
-        <p className="text-xl text-white/90">
+        <p className="text-lg md:text-xl lg:text-2xl text-white/90">
           Empowering you to streamline workflows, enhance customer engagement,
           and drive measurable growth.
         </p>

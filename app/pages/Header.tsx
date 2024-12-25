@@ -78,10 +78,10 @@ export default function Header() {
         muted
         playsInline
       >
-        <source src="/headerVideo.mp4" type="video/mp4" />
+        <source src="/header-girl-video.mp4" type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-lg" />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
 
       <Navbar />
 
@@ -99,11 +99,11 @@ export default function Header() {
           ref={imageRef}
           className="mt-12 w-full max-w-3xl mx-auto p-4 transform-gpu"
         >
-          <img
+          {/* <img
             src="/header-automation.png"
             alt="Automation Header"
             className="w-[70%] mx-auto h-auto rounded-3xl shadow-2xl"
-          />
+          /> */}
         </div>
       </div>
     </div>
