@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -38,53 +39,56 @@ const services = [
 export default function Services() {
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
-      defaults: { duration: 1, ease: "power2.out" }
-    });
-
     // Header animation
-    tl.from(headerRef.current, {
+    gsap.from(headerRef.current, {
       y: 100,
       opacity: 0,
+      duration: 1,
       scrollTrigger: {
         trigger: headerRef.current,
         start: "top 80%",
-        end: "top 60%",
-        scrub: true
+        end: "top 20%",
+        scrub: 1
       }
     });
 
-    // Cards stagger animation
-    tl.from(cardsRef.current, {
-      x: (index: number) => (index % 2 === 0 ? -100 : 100),
-      opacity: 0,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: cardsRef.current,
-        start: "top 85%",
-        end: "top 65%",
-        scrub: true
-      }
-    }, "-=0.5");
+    // Horizontal scroll animation
+    if (window.innerWidth > 768) {
+      gsap.to(containerRef.current, {
+        x: () => -(containerRef.current!.scrollWidth - window.innerWidth + 32),
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 20%",
+          end: "+=2000",
+          scrub: 1,
+          pin: true
+        }
+      });
+    }
 
-    // Cleanup on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    // Mobile background change on scroll
+    if (window.innerWidth <= 768) {
+      services.forEach((service, index) => {
+        ScrollTrigger.create({
+          trigger: cardsRef.current[index],
+          start: "top center",
+          end: "bottom center",
+          onEnter: () => setActiveImage(service.imagePath),
+          onEnterBack: () => setActiveImage(service.imagePath),
+        });
+      });
+    }
   }, []);
 
-  // Handle touch devices by disabling hover effects
-  const isTouchDevice = () => {
-    return ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  };
-
   return (
-    <div className="min-h-screen bg-black py-24 relative">
+    <div className="min-h-screen bg-black py-24 relative overflow-hidden">
       <div 
         className="absolute inset-0 transition-opacity duration-700 bg-cover bg-center"
         style={{ 
@@ -94,8 +98,8 @@ export default function Services() {
         }}
       />
       
-      <div className="relative z-10 w-full px-6 md:px-12">
-        <div ref={headerRef} className="text-center mb-20">
+      <div className="relative z-10">
+        <div ref={headerRef} className="text-center mb-20 px-6">
           <p className="text-orange-500 mb-4 text-sm md:text-base">OUR SERVICES</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             What We Offer
@@ -106,38 +110,32 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          ref={containerRef} 
+          className="flex md:pl-[10vw] gap-6 md:gap-8 px-6 md:px-0"
+        >
           {services.map((service, index) => (
             <div
               key={service.id}
               ref={el => cardsRef.current[index] = el}
-              className="group relative p-6 rounded-3xl border border-white/10 overflow-hidden transition-transform duration-500 hover:scale-105 active:scale-100"
+              className="relative flex-shrink-0 w-full md:w-[600px] p-6 rounded-3xl border border-white/10 overflow-hidden"
               onMouseEnter={() => {
-                if (!isTouchDevice()) {
-                  setActiveImage(service.imagePath);
-                  gsap.to(cardsRef.current[index], {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: "power2.out"
-                  });
-                }
+                setActiveImage(service.imagePath);
+                gsap.to(cardsRef.current[index], {
+                  scale: 1.05,
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
               }}
               onMouseLeave={() => {
-                if (!isTouchDevice()) {
+                if (window.innerWidth > 768) {
                   setActiveImage(null);
-                  gsap.to(cardsRef.current[index], {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: "power2.out"
-                  });
                 }
-              }}
-              onTouchStart={() => {
-                // Optional: Handle touch interactions if needed
-                setActiveImage(service.imagePath);
-              }}
-              onTouchEnd={() => {
-                setActiveImage(null);
+                gsap.to(cardsRef.current[index], {
+                  scale: 1,
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-900 opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
@@ -148,7 +146,7 @@ export default function Services() {
                 <h3 className="text-xl font-bold text-white mt-2 mb-4">{service.title}</h3>
                 <p className="text-white/70 text-sm">{service.description}</p>
                 <div className="mt-8">
-                  <button className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-orange-500 transition-all duration-300">
+                  <button className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-orange-500 transition-all duration-300">
                     +
                   </button>
                 </div>
