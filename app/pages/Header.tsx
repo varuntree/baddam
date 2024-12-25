@@ -85,7 +85,7 @@ export default function Header() {
 
       <Navbar />
 
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center justify-center min-h-screen pt-24">
+      <div className="relative z-10 w-full px-6 md:px-12 flex flex-col items-center justify-center min-h-screen pt-24">
         <CornerEdgeCard highlightedWords={["Businesses", "Automation"]} />
         <div className="flex justify-center gap-4 mt-8">
           <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-white/90 transition-colors">

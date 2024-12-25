@@ -98,7 +98,7 @@ export default function HowWeWork() {
 
   return (
     <div className="min-h-screen bg-black py-16 md:py-24 rounded-3xl overflow-hidden">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-6 md:px-12">
         {/* Header Section */}
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <h1 className="text-3xl md:text-5xl font-bold text-white w-full md:w-1/2">
