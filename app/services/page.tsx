@@ -9,7 +9,7 @@ const services = [
     title: "In-Person Events",
     description: "Immersive experiences to grow your leadership and your team in a collaborative way",
     category: "01",
-    imagePath: "/conversational.png"
+    imagePath: "/test.png"
   },
   {
     id: 2,
