@@ -11,7 +11,19 @@ export default function About() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+          {/* Left Image */}
+          <div className="relative">
+            <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 rounded-3xl transform -rotate-6 opacity-20"></div>
+              <img 
+                src="/test.png" 
+                alt="Virtual Coach Interface"
+                className="relative rounded-3xl shadow-2xl w-full"
+              />
+            </div>
+          </div>
+
+          {/* Right Content */}
           <div>
             <div className="text-orange-500 text-sm font-medium mb-2">
               [ 01 ]
@@ -28,18 +40,6 @@ export default function About() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
-          </div>
-
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 rounded-3xl transform rotate-6 opacity-20"></div>
-              <img 
-                src="/test.png" 
-                alt="Virtual Coach Interface"
-                className="relative rounded-3xl shadow-2xl w-full"
-              />
-            </div>
           </div>
         </div>
       </div>
