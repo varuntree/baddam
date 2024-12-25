@@ -67,7 +67,7 @@ export default function AboutUs() {
         gsap.fromTo(card, 
           { y: 0 },
           {
-            y: -50,
+            y: -90,
             scrollTrigger: {
               trigger: card,
               start: "top center",
