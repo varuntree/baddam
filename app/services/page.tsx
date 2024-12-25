@@ -35,8 +35,8 @@ const services: ServiceCard[] = [
 ];
 
 export default function Services() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -62,18 +62,17 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
-      <video
-        ref={videoRef}
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/headerVideo.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+    <div className="min-h-screen bg-white relative">
+      {hoveredCardIndex !== null && (
+        <div 
+          className="fixed inset-0 z-0"
+          style={{
+            backgroundImage: "url('/test.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      )}
 
       <div className="relative z-10 pt-32 pb-20 px-4 md:px-12">
         <div className="text-center mb-20">
@@ -91,7 +90,11 @@ export default function Services() {
             <div
               key={service.id}
               ref={el => cardsRef.current[index] = el}
-              className="group relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105"
+              className={`group relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 ${
+                hoveredCardIndex === null || hoveredCardIndex === index ? 'opacity-100 z-10' : 'opacity-0'
+              }`}
+              onMouseEnter={() => setHoveredCardIndex(index)}
+              onMouseLeave={() => setHoveredCardIndex(null)}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
               <div className="absolute inset-0 bg-primary/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
