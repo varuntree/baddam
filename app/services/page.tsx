@@ -95,19 +95,19 @@ export default function Services() {
             <div
               key={service.id}
               ref={el => cardsRef.current[index] = el}
-              className={`relative rounded-3xl overflow-hidden transition-all duration-500 bg-white ${
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${
                 hoveredCardIndex === null ? 'opacity-100 scale-100' :
                 hoveredCardIndex === index ? 'opacity-100 scale-110 z-20' : 'opacity-0 scale-95 pointer-events-none'
               }`}
               onMouseEnter={() => setHoveredCardIndex(index)}
               onMouseLeave={() => setHoveredCardIndex(null)}
             >
-              <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${hoveredCardIndex === index ? 'to-black/60' : 'to-transparent'} transition-colors duration-300`} />
-              <div className={`absolute inset-0 ${hoveredCardIndex === index ? 'bg-primary/20 backdrop-blur-md' : ''} transition-all duration-300`} />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+              <div className="absolute inset-0 bg-primary/20 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative h-[400px] p-6 flex flex-col justify-end">
-                <p className={`mb-2 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/60' : 'text-black/60'}`}>0{index + 1}</p>
-                <h3 className={`text-2xl font-bold mb-3 transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white' : 'text-black'}`}>{service.title}</h3>
-                <p className={`transition-colors duration-300 ${hoveredCardIndex === index ? 'text-white/80' : 'text-black/80'}`}>{service.description}</p>
+                <p className="mb-2 text-white/60">0{index + 1}</p>
+                <h3 className="text-2xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-white/80">{service.description}</p>
               </div>
             </div>
           ))}
