@@ -73,18 +73,16 @@ export default function Services() {
       });
     }
 
-    // Mobile background change on scroll
-    if (window.innerWidth <= 768) {
-      services.forEach((service, index) => {
-        ScrollTrigger.create({
-          trigger: cardsRef.current[index],
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => setActiveImage(service.imagePath),
-          onEnterBack: () => setActiveImage(service.imagePath),
-        });
+    // Background change on scroll for all screen sizes
+    services.forEach((service, index) => {
+      ScrollTrigger.create({
+        trigger: cardsRef.current[index],
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setActiveImage(service.imagePath),
+        onEnterBack: () => setActiveImage(service.imagePath),
       });
-    }
+    });
   }, []);
 
   return (
