@@ -11,7 +11,7 @@ const services = [
     description:
       "Empower your business with intelligent chatbots and virtual assistants that deliver human-like interactions in real time. Our Conversational AI solutions are designed to seamlessly integrate across websites, social media platforms, and messaging apps, providing 24/7 support to your customers. By leveraging advanced Natural Language Processing (NLP), our tools not only resolve customer inquiries efficiently but also learn from each interaction to improve over time, ensuring a personalized and consistent user experience.",
     category: "01",
-    imagePath: "/conversational.png",
+    imagePath: "/test.png",
   },
   {
     id: 2,
