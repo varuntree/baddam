@@ -9,29 +9,29 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     id: 1,
-    title: "In-Person Events",
-    description: "Immersive experiences to grow your leadership and your team in a collaborative way",
+    title: "Conversational AI",
+    description: "Advanced chatbots and virtual assistants that transform customer interactions with natural language processing",
     category: "01",
     imagePath: "/conversational.png"
   },
   {
     id: 2,
-    title: "Training Programs",
-    description: "Leadership training, business mentoring, and masterclasses",
+    title: "Process Automation",
+    description: "Streamline your workflows with intelligent automation solutions that boost efficiency",
     category: "02",
     imagePath: "/workflow.png"
   },
   {
     id: 3,
-    title: "Executive Coaching",
-    description: "1:1 coaching from Ryan and his executive team helps employees to drive growth",
+    title: "Data Analytics",
+    description: "Turn your data into actionable insights with our advanced analytics and reporting tools",
     category: "03",
     imagePath: "/reputational.png"
   },
   {
     id: 4,
-    title: "AI-powered Coaching",
-    description: "Scaling the coaching industry globally with groundbreaking AI solutions",
+    title: "Custom AI Solutions",
+    description: "Tailored artificial intelligence solutions designed specifically for your business needs",
     category: "04",
     imagePath: "/robo.jpg"
   }
@@ -121,11 +121,11 @@ export default function Services() {
         <div ref={headerRef} className="text-center mb-20">
           <p className="text-orange-500 mb-4 text-sm md:text-base">WAYS</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            We Can Work Together
+            AI Solutions for Tomorrow
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
-            We are creating a world where everyone has the coach and mentor they need
-            to unlock their potential and fulfill their purpose
+            Empowering businesses with cutting-edge artificial intelligence solutions
+            that drive growth and innovation
           </p>
         </div>
 
