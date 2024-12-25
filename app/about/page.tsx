@@ -75,6 +75,57 @@ export default function About() {
             </button>
           </div>
         </div>
+
+        {/* Ways We Can Work Together Section */}
+        <div className="pt-32">
+          <div className="text-center mb-16">
+            <div className="text-orange-500 text-sm font-medium mb-2">[ WORK ]</div>
+            <h2 className="text-4xl md:text-6xl font-bold text-black mb-4">Ways We Can Work Together</h2>
+            <p className="text-gray-600 text-lg">
+              We are creating a world where everyone has the coach and mentor they need 
+              to unlock their potential and fulfill their purpose.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              {
+                number: '01',
+                title: 'In-Person Events',
+                description: 'Immersive experiences to grow your leadership and your business simultaneously'
+              },
+              {
+                number: '02',
+                title: 'Training programs',
+                description: 'Leadership training, business mentorship, and masterclasses'
+              },
+              {
+                number: '03',
+                title: 'Executive coaching',
+                description: '1:1 coaching from Ryan and his executive team helps employees to improve their skills'
+              },
+              {
+                number: '04',
+                title: 'AI-powered coaching',
+                description: 'Scaling the coaching industry globally with groundbreaking AI'
+              }
+            ].map((item, index) => (
+              <div 
+                key={index} 
+                className={`p-8 rounded-3xl ${index === 1 ? 'bg-gradient-to-br from-orange-500 to-orange-400 text-white' : 'bg-gray-50'}`}
+              >
+                <div className="text-sm mb-4">{item.number}</div>
+                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                <p className={`text-sm ${index === 1 ? 'text-white/90' : 'text-gray-600'}`}>
+                  {item.description}
+                </p>
+                <button className={`mt-6 w-8 h-8 rounded-full border ${index === 1 ? 'border-white/20 text-white hover:bg-white hover:text-orange-500' : 'border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black'} flex items-center justify-center transition-all duration-300`}>
+                  +
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
