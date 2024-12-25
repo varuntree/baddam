@@ -88,13 +88,17 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-black py-24 relative overflow-hidden">
       <div 
-        className="absolute inset-0 transition-opacity duration-700 bg-cover bg-center"
+        className="absolute inset-0 transition-all duration-700"
         style={{ 
           backgroundImage: `url(${activeImage || ''})`,
-          opacity: activeImage ? 0.3 : 0,
-          transition: 'opacity 0.7s ease-in-out'
+          opacity: activeImage ? 1 : 0,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transition: 'all 0.7s ease-in-out'
         }}
       />
+      <div className="absolute inset-0 bg-black/80" />
       
       <div className="relative z-10">
         <div ref={headerRef} className="text-center mb-20 px-6">
