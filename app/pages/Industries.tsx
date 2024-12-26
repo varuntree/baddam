@@ -59,7 +59,7 @@ export default function Industries() {
       <div className="absolute inset-0" />
       
       {/* Glassmorphic Card */}
-      <div className="hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96 bg-black/10 backdrop-blur-2xl rounded-3xl border border-white/20 flex-col items-center justify-between p-8">
+      <div className="overflow-hidden hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96 bg-black/10 backdrop-blur-2xl rounded-3xl border border-white/20 flex-col items-center justify-between p-8 before:content-[''] before:absolute before:top-0 before:right-0 before:w-24 before:h-24 before:bg-orange-500/30 before:blur-2xl before:-z-10">
         <h3 className="text-2xl font-bold text-black text-center flex items-center justify-center h-full">
           "Automate to dominate profits"
         </h3>
