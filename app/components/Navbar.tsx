@@ -39,7 +39,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-[95%] z-50 bg-black/40 backdrop-blur-lg px-6 md:px-8 lg:px-12 rounded-3xl mx-auto left-0 right-0 mt-4"> {/* Added padding here */}
+    <nav className="fixed w-[80%] max-w-3xl z-50 bg-black/40 backdrop-blur-lg px-6 md:px-8 lg:px-12 rounded-3xl mx-auto left-0 right-0 mt-4"> {/* Added padding here */}
       <div className="max-w-7xl mx-auto"> {/* Removed unnecessary px-4 sm:px-6 lg:px-8 */}
         <div className="flex items-center justify-between h-16">
           {/* Company Name */}
