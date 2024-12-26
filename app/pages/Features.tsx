@@ -37,27 +37,30 @@ export default function Features() {
             How can we help <span className="italic">you</span>?
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            From Google ads, to Meta ads, to TikTok ads, and even content creation, we've got you covered on everything front.
+          Transform your business with AI-driven solutions tailored to your unique needs. Explore our cutting-edge offerings
           </p>
         </div>
         
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          {/* Meta Ads */}
-          <div className="bg-gradient-to-br from-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
-            <h3 className="text-3xl font-bold text-white mb-4">{features[0].title}</h3>
-            <p className="text-gray-400">{features[0].description}</p>
-          </div>
+            <div className=" p-8 rounded-3xl backdrop-blur-sm border border-gray-800 relative overflow-hidden">
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-700/90 rounded-full blur-3xl"></div>
+            <h3 className="text-3xl font-bold text-white mb-4 relative">{features[0].title}</h3>
+            <p className="text-gray-400 relative">{features[0].description}</p>
+            </div>
           
           {/* Google Ads */}
-          <div className="bg-gradient-to-br from-orange-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
-            <h3 className="text-3xl font-bold text-white mb-4">{features[1].title}</h3>
-            <p className="text-gray-400">{features[1].description}</p>
-          </div>
+          <div className=" p-8 rounded-3xl backdrop-blur-sm border border-gray-800 relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-700/90 rounded-full blur-3xl"></div>
+                <h3 className="text-3xl font-bold text-white mb-4">{features[1].title}</h3>
+                <p className="text-gray-400">{features[1].description}</p>
+                </div>
         </div>
 
         {/* TikTok Ads - Full Width */}
-        <div className="bg-gradient-to-r from-red-900/20 via-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+        <div className=" p-8 rounded-3xl backdrop-blur-sm border border-gray-800 relative overflow-hidden">
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-700/90 rounded-full blur-3xl"></div>
+        <div className="absolute -top-10 -left-10 w-32 h-32 bg-orange-700/90 rounded-full blur-3xl"></div> 
           <h3 className="text-3xl font-bold text-white mb-4">{features[2].title}</h3>
           <p className="text-gray-400">{features[2].description}</p>
         </div>
