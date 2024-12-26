@@ -44,22 +44,22 @@ export default function Features() {
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Meta Ads */}
-          <div className="bg-gradient-to-br from-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+          <div className="bg-gradient-to-br from-blue-800 via-blue-900 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-blue-800/50">
             <h3 className="text-3xl font-bold text-white mb-4">{features[0].title}</h3>
-            <p className="text-gray-400">{features[0].description}</p>
+            <p className="text-gray-300">{features[0].description}</p>
           </div>
           
           {/* Google Ads */}
-          <div className="bg-gradient-to-br from-orange-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+          <div className="bg-gradient-to-br from-orange-800 via-orange-900 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-orange-800/50">
             <h3 className="text-3xl font-bold text-white mb-4">{features[1].title}</h3>
-            <p className="text-gray-400">{features[1].description}</p>
+            <p className="text-gray-300">{features[1].description}</p>
           </div>
         </div>
 
         {/* TikTok Ads - Full Width */}
-        <div className="bg-gradient-to-r from-red-900/20 via-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+        <div className="bg-gradient-to-r from-orange-900 via-blue-900 to-blue-800 p-8 rounded-3xl backdrop-blur-sm border border-blue-800/50">
           <h3 className="text-3xl font-bold text-white mb-4">{features[2].title}</h3>
-          <p className="text-gray-400">{features[2].description}</p>
+          <p className="text-gray-300">{features[2].description}</p>
         </div>
       </div>
     </div>
