@@ -133,12 +133,23 @@ export default function Services() {
             key={service.id}
             ref={(el) => (cardRefs.current[index] = el)}
             className="h-screen flex flex-col items-center justify-center px-6 
-                       text-center border-t border-white/10"
+                       text-center border-t border-white/10 relative overflow-hidden"
           >
             <span className="text-orange-500 text-sm mb-2">
               {service.category}
             </span>
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
+            {/* Top-left gradient */}
+            <div className={`absolute top-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-20 ${
+              index === 0 ? 'bg-gradient-to-br from-blue-500 to-transparent' :
+              index === 1 ? 'bg-gradient-to-br from-orange-500 to-transparent' : 'bg-gradient-to-br from-blue-600 to-transparent'
+            }`} />
+            
+            {/* Bottom-right gradient */}
+            <div className={`absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-20 ${
+              index === 0 ? 'bg-gradient-to-tl from-orange-500 to-transparent' :
+              index === 1 ? 'bg-gradient-to-tl from-blue-500 to-transparent' : 'bg-gradient-to-tl from-orange-600 to-transparent'
+            }`} />
+            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 relative z-10">
               {service.title}
             </h2>
             <p className="text-white/70 max-w-lg mx-auto text-sm md:text-base">
