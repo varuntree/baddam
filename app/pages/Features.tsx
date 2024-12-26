@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -7,70 +8,58 @@ import FeatureCard from "../components/FeatureCard";
 export default function Features() {
   const features = [
     {
-      title: "Conversational AI",
+      title: "Meta Ads",
       description:
-        "Empower your business with intelligent chatbots and virtual assistants that deliver human-like interactions across websites, social media, and messaging platforms. These AI-driven tools handle customer queries, streamline support, and boost engagement by providing instant, 24/7 assistance. By reducing response times and personalizing interactions, Conversational AI ensures an exceptional customer experience while freeing up your team to focus on higher-value tasks.",
+        "Our team has decades of combined experience creating winning Facebook & Instagram campaigns. From targeting the right audience to crafting compelling ad content, we help you maximize your social media advertising ROI.",
       imageSrc: "/conversational.png",
     },
     {
-      title: "Reputation Management AI",
+      title: "Google Ads",
       description:
-        "Take control of your brand's image with advanced AI tools designed to monitor, analyze, and respond to online reviews and feedback. Reputation Management AI identifies trends, highlights critical areas for improvement, and generates actionable insights. By maintaining a positive digital presence, you'll foster trust with your audience and make data-driven decisions to continuously enhance your services.",
+        "Put your products in front of active buyers and beat out the competition with expert Google Shopping services. Our data-driven approach ensures your ads reach the most relevant audience at the optimal time.",
       imageSrc: "/reputational.png",
     },
     {
-      title: "Workflow Optimization AI",
+      title: "TikTok Ads",
       description:
-        "Streamline your business processes and supercharge productivity with Workflow Optimization AI. By automating repetitive tasks and providing actionable insights, this solution helps you save time and resources. Whether it's scheduling, data analysis, or task management, Workflow Optimization AI eliminates inefficiencies and creates a seamless operational flow, enabling your team to focus on strategic initiatives.",
+        "With over 800 million monthly users in the US, TikTok is the strongest link between your brand and the next generation. We help you create engaging, viral-worthy content that resonates with your target audience.",
       imageSrc: "/workflow.png",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-300 py-24 rounded-3xl overflow-hidden">
-      <div className="w-full px-6 md:px-12">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold text-black mb-4">FEATURES</h2>
-          <p className="text-2xl text-black/90 max-w-2xl">
-            The Work AI platform for quickly & securely bringing AI into the
-            enterprise.
+    <div className="min-h-screen bg-black py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <div className="text-gray-400 mb-2">Services</div>
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-4">
+            How can we help <span className="italic">you</span>?
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            From Google ads, to Meta ads, to TikTok ads, and even content creation, we've got you covered on everything front.
           </p>
         </div>
         
-        <div className="py-16">
-          {/* First Row */}
-          <div className="flex flex-col lg:flex-row gap-8 mb-8">
-            <div className="lg:w-1/4">
-              <h3 className="text-3xl  font-bold text-black mb-4 lg:mb-0">Solutions</h3>
-            </div>
-            <div className="lg:w-3/4">
-              <FeatureCard
-                key={0}
-                title={features[0].title}
-                description={features[0].description}
-                imageSrc={features[0].imageSrc}
-              />
-            </div>
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Meta Ads */}
+          <div className="bg-gradient-to-br from-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+            <h3 className="text-3xl font-bold text-white mb-4">{features[0].title}</h3>
+            <p className="text-gray-400">{features[0].description}</p>
           </div>
+          
+          {/* Google Ads */}
+          <div className="bg-gradient-to-br from-orange-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+            <h3 className="text-3xl font-bold text-white mb-4">{features[1].title}</h3>
+            <p className="text-gray-400">{features[1].description}</p>
+          </div>
+        </div>
 
-          {/* Second Row */}
-          <div className="lg:ml-[25%] mt-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              {features.slice(1).map((feature, index) => (
-                <FeatureCard
-                  key={index + 1}
-                  title={feature.title}
-                  description={feature.description}
-                  imageSrc={feature.imageSrc}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="flex justify-center mt-16">
-            <Link href="/solutions" className="px-8 py-3 bg-black text-white rounded-3xl hover:bg-black/80 transition-colors">
-              More Solutions
-            </Link>
-          </div>
+        {/* TikTok Ads - Full Width */}
+        <div className="bg-gradient-to-r from-red-900/20 via-blue-900/20 to-transparent p-8 rounded-3xl backdrop-blur-sm border border-gray-800">
+          <h3 className="text-3xl font-bold text-white mb-4">{features[2].title}</h3>
+          <p className="text-gray-400">{features[2].description}</p>
         </div>
       </div>
     </div>
