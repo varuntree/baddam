@@ -61,13 +61,11 @@ export default function CornerEdgeCard({
         ref={topLeftRef}
         className="absolute top-0 left-0 -translate-x-[200%] -translate-y-[200%] opacity-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-blue-600/20 to-transparent blur-xl rounded-full w-16 h-16 -z-10" />
         <Image
           src="/top-left.svg"
           alt="Top Left Corner Decoration"
           width={40}
           height={40}
-          className="relative z-10"
         />
       </div>
 
@@ -76,13 +74,11 @@ export default function CornerEdgeCard({
         ref={bottomRightRef}
         className="absolute bottom-0 right-0 translate-x-[200%] translate-y-[200%] opacity-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-tl from-red-500/30 via-red-600/20 to-transparent blur-xl rounded-full w-16 h-16 -z-10" />
         <Image
           src="/bottom-right.svg"
           alt="Bottom Right Corner Decoration"
           width={40}
           height={40}
-          className="relative z-10"
         />
       </div>
 
