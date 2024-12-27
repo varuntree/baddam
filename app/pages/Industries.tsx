@@ -72,7 +72,7 @@ export default function Industries() {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:border-orange-500/50 transition-all duration-300"
+              className="industry-card bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:border-orange-500/50 transition-all duration-300"
             >
               <div 
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
