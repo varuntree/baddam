@@ -1,8 +1,7 @@
 
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
 
 const teamMembers = [
   {
@@ -38,41 +37,6 @@ const teamMembers = [
 ];
 
 export default function People() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current || !cardsRef.current) return;
-
-    // Clone cards for seamless infinite scroll
-    const cards = cardsRef.current.children;
-    [...cards].forEach(card => {
-      const clone = card.cloneNode(true);
-      cardsRef.current?.appendChild(clone);
-    });
-
-    // Set initial position
-    gsap.set(cardsRef.current, { x: 0 });
-
-    // Create infinite scroll animation
-    const tl = gsap.timeline({
-      repeat: -1,
-      defaults: { ease: "none" }
-    });
-
-    const totalWidth = cards[0].clientWidth * cards.length;
-
-    tl.to(cardsRef.current, {
-      x: -totalWidth,
-      duration: 20,
-      ease: "linear"
-    });
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-black text-white py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,28 +53,26 @@ export default function People() {
           </button>
         </div>
 
-        <div ref={containerRef} className="overflow-hidden">
-          <div ref={cardsRef} className="flex gap-8">
-            {teamMembers.map((member, index) => (
-              <div 
-                key={index}
-                className="relative min-w-[300px] group overflow-hidden rounded-3xl"
-              >
-                <div className="aspect-w-3 aspect-h-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-2xl font-semibold">{member.name}</h3>
-                  <p className="text-gray-400">{member.role}</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teamMembers.map((member, index) => (
+            <div 
+              key={index}
+              className="relative group overflow-hidden rounded-3xl"
+            >
+              <div className="aspect-w-3 aspect-h-4">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
               </div>
-            ))}
-          </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-2xl font-semibold">{member.name}</h3>
+                <p className="text-gray-400">{member.role}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
