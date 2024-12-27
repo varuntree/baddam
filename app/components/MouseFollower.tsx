@@ -16,8 +16,8 @@ export default function MouseFollower() {
 
     const animate = () => {
       setPosition(prev => ({
-        x: prev.x + (targetPosition.x - prev.x) * 0.1,
-        y: prev.y + (targetPosition.y - prev.y) * 0.1
+        x: prev.x + (targetPosition.x - prev.x) * 0.15,
+        y: prev.y + (targetPosition.y - prev.y) * 0.15
       }));
       requestAnimationFrame(animate);
     };
@@ -32,12 +32,13 @@ export default function MouseFollower() {
 
   return (
     <div 
-      className="fixed w-8 h-8 bg-orange-500 rounded-full pointer-events-none mix-blend-difference"
+      className="fixed w-5 h-5 bg-orange-500 rounded-full pointer-events-none mix-blend-difference hidden md:block"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         transform: 'translate(-50%, -50%)',
         zIndex: 9999,
+        transition: 'width 0.3s, height 0.3s'
       }}
     />
   );
