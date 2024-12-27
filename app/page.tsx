@@ -7,6 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import People from "./pages/People";
 import Services from "./services/page";
 import Footer from "./components/Footer";
+import Accordion from "./components/Accordion";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Industries />
       <AboutUs />
       <People />
+      <Accordion />
       <Footer />
     </div>
   );
