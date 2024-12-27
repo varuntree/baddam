@@ -197,3 +197,144 @@
 
 
 
+"use client";
+
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+interface Testimonial {
+  name: string;
+  role: string;
+  quote: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Chris Wright",
+    role: "CEO of Wednesday",
+    quote: "Thanks to Baddam Agency, our business experienced a remarkable turnaround in automation. Their expertise helped us achieve unprecedented efficiency."
+  },
+  {
+    name: "Sarah Yanna",
+    role: "Director of Saturday",
+    quote: "Baddam Agency transformed our operations completely. Their innovative solutions tripled our revenue in record time."
+  },
+  {
+    name: "Belinda Meyers",
+    role: "COO of Friday",
+    quote: "We never realized the power of AI until we found Baddam Agency. It's doubled our productivity in just a few months, absolutely incredible."
+  },
+  {
+    name: "Jonathan Day",
+    role: "Co-founder of Monday",
+    quote: "Baddam Agency exceeded our expectations! Their approach to AI integration is unparalleled, leading to substantial growth in our systems."
+  },
+  {
+    name: "Melissa Reid",
+    role: "Founder of Tuesday",
+    quote: "Before discovering Baddam Agency, we were hesitant about investing in AI, but they proved us wrong with their incredible results."
+  }
+];
+
+export default function AboutUs() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // First row animation
+    gsap.to(".row-1", {
+      x: "-50%",
+      scrollTrigger: {
+        trigger: ".testimonials-container",
+        start: "top center",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+
+    // Middle row animation (opposite direction)
+    gsap.to(".row-2", {
+      x: "50%",
+      scrollTrigger: {
+        trigger: ".testimonials-container",
+        start: "top center",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+
+    // Last row animation (same as first)
+    gsap.to(".row-3", {
+      x: "-50%",
+      scrollTrigger: {
+        trigger: ".testimonials-container",
+        start: "top center",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-black text-white py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-6xl font-bold mb-4">
+            There's a reason people are{' '}
+            <span className="italic text-orange-500">raving</span> about us.
+          </h2>
+        </div>
+
+        <div className="testimonials-container space-y-8 overflow-hidden">
+          {/* First Row */}
+          <div className="row-1 flex space-x-6">
+            {testimonials.slice(0, 2).map((testimonial, index) => (
+              <div key={index} className="bg-zinc-900 p-8 rounded-2xl min-w-[400px]">
+                <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full mr-4"></div>
+                  <div>
+                    <h4 className="font-semibold">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Middle Row */}
+          <div className="row-2 flex space-x-6 translate-x-[-50%]">
+            {testimonials.slice(2, 4).map((testimonial, index) => (
+              <div key={index} className="bg-zinc-900 p-8 rounded-2xl min-w-[400px]">
+                <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full mr-4"></div>
+                  <div>
+                    <h4 className="font-semibold">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Last Row */}
+          <div className="row-3 flex space-x-6">
+            {testimonials.slice(4).map((testimonial, index) => (
+              <div key={index} className="bg-zinc-900 p-8 rounded-2xl min-w-[400px]">
+                <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full mr-4"></div>
+                  <div>
+                    <h4 className="font-semibold">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
