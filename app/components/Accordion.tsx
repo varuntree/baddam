@@ -5,28 +5,36 @@ import React, { useState } from 'react';
 
 const accordionData = [
   {
-    title: "How do you tailor Google Ads strategies for different businesses?",
-    content: "We create customized Google Ads strategies based on your industry, target audience, and business goals. This includes keyword research, ad copy optimization, and budget allocation to maximize ROI."
+    title: "What is AI automation, and how can it benefit my business?",
+    content: "AI automation uses artificial intelligence to perform tasks that typically require human effort. This can include customer support, social media management, workflow optimization, and more. It helps save time, reduce costs, and improve accuracy while scaling operations."
   },
   {
-    title: "What's unique about your Meta Ads approach?",
-    content: "Our Meta Ads approach combines advanced targeting capabilities with AI-driven optimization to reach your ideal customers across Facebook and Instagram platforms."
+    title: "Can AI help with social media management?",
+    content: "Absolutely! Our Social Media Automation AI can schedule posts, engage with followers, and respond to messages, ensuring consistent and timely interactions with your audience while saving you hours of manual work."
   },
   {
-    title: "How do you ensure effective TikTok Ads targeting and engagement?",
-    content: "We leverage TikTok's unique algorithm and trending content patterns to create engaging ad campaigns that resonate with your target audience while maintaining brand authenticity."
+    title: "What is Automated Prospecting, and how does it work for real estate agents?",
+    content: "Automated Prospecting uses AI to enhance branding, qualify leads, and nurture potential clients. It's designed to guarantee ROI for real estate professionals by streamlining the client acquisition process."
   },
   {
-    title: "How do you choose ad formats and placements across platforms?",
-    content: "We analyze performance data and user behavior to select the most effective ad formats and placements that align with your campaign objectives and target audience preferences."
+    title: "Do you offer custom AI solutions?",
+    content: "Yes, we specialize in creating custom AI solutions to address specific challenges in your business. Our team works closely with you to design and implement solutions that drive measurable results."
   },
   {
-    title: "What reporting and analytics do you provide for ad campaign tracking?",
-    content: "Our comprehensive reporting includes real-time performance metrics, ROI analysis, and actionable insights through interactive dashboards and regular performance reviews."
+    title: "Is AI safe to use for business operations?",
+    content: "Yes, our AI solutions are designed with security and reliability in mind. We use industry-leading practices to ensure your data remains secure while maximizing the efficiency of your workflows."
   },
   {
-    title: "Do you offer ongoing ad optimization and management services?",
-    content: "Yes, we provide continuous campaign monitoring, A/B testing, and optimization services to ensure your ads maintain peak performance and deliver the best possible results."
+    title: "How long does it take to implement an AI solution?",
+    content: "The timeline depends on the complexity of your requirements. On average, most solutions can be implemented within a few weeks to a couple of months, ensuring they're customized and optimized for your business."
+  },
+  {
+    title: "How do you support businesses after implementation?",
+    content: "We provide ongoing support, training, and updates to ensure your AI solutions continue to meet your business needs as they grow and evolve."
+  },
+  {
+    title: "Do I need technical expertise to use your AI solutions?",
+    content: "Not at all! Our solutions are user-friendly and designed for seamless integration into your current operations. We also provide training and support to make the transition smooth."
   }
 ];
 
