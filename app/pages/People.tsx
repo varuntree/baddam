@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -104,6 +105,11 @@ export default function People() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center mt-16">
+        <Link href="/about" className="px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors">
+          Learn More About Us
+        </Link>
       </div>
     </div>
   );
