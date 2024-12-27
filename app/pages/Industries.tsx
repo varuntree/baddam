@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -51,7 +50,7 @@ export default function Industries() {
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden rounded-3xl">
       <img
         src="/robo.jpg"
         alt="Robot Background"
