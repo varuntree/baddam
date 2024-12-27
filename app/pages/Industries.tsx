@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -51,57 +50,58 @@ export default function Industries() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-orange-500 text-sm uppercase tracking-wider mb-4">Industries We Serve</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Transforming <span className="italic text-orange-500">Every</span> Industry
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Our AI solutions are tailored to meet the unique challenges and opportunities across different sectors.
-          </p>
-        </div>
+    <div className="relative min-h-screen rounded-3xl overflow-hidden">
+      <img
+        src="/robo.jpg"
+        alt="Robot Background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0" />
+      
+      {/* Glassmorphic Card */}
+      <div className="overflow-hidden hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 w-80 h-96  backdrop-blur-lg rounded-3xl border border-white/20 flex-col items-center justify-between p-8 before:content-[''] before:absolute before:top-0 before:right-0 before:w-24 before:h-24 before:bg-orange-500/30 before:blur-2xl before:-z-10">
+        <h3 className="text-2xl font-bold text-black text-center flex items-center justify-center h-full">
+          "Automate to dominate profits"
+        </h3>
+        <button className="w-full py-4 px-8 bg-white/30 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl text-black font-semibold transition-all duration-300">
+          Book Now
+        </button>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((industry, index) => (
-            <div
-              key={index}
-              className="group relative bg-white/5 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-orange-500/50"
-            >
-              <div 
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="cursor-pointer"
-              >
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-orange-500 transition-colors">
-                  {industry.title}
-                </h3>
+      {/* Side Card */}
+      <div className="absolute top-0 bottom-0 py-8 left-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/10 backdrop-blur-lg md:backdrop-blur-2xl border-r border-white/20">
+        <div className="px-6 md:px-12 py-6">
+          <h2 className="text-2xl font-bold text-black mb-4">Industries</h2>
+          <div className="space-y-2">
+            {industries.map((industry, index) => (
+              <div key={index} className="border-b border-white/20">
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full py-4 px-2 text-left text-black hover:bg-white/10 transition-colors"
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">{industry.title}</span>
+                    <span className="transform transition-transform duration-200">
+                      {openIndex === index ? '−' : '+'}
+                    </span>
+                  </div>
+                </button>
                 <div
-                  className={`transition-all duration-300 overflow-hidden ${
-                    openIndex === index ? 'max-h-48' : 'max-h-0'
+                  className={`px-2 overflow-hidden transition-all duration-300 ease-in-out ${
+                    openIndex === index ? "max-h-32 opacity-100 pb-4" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="text-gray-400">
+                  <div className="text-black/80 text-sm">
                     {industry.description}
-                  </p>
-                </div>
-                <div className="absolute top-6 right-6">
-                  <span className={`text-2xl text-orange-500 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-45' : ''
-                  }`}>
-                    +
-                  </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-        <div className="mt-16 text-center">
-          <button className="px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors">
-            Get Started Today
-          </button>
-        </div>
+      </div>
+      <div className="py-16">
+        {/* Existing content */}
       </div>
     </div>
   );
