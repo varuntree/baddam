@@ -76,17 +76,22 @@ export default function Industries() {
             >
               <div 
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="cursor-pointer"
+                className="cursor-pointer group"
               >
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-semibold text-white">
                     {industry.title}
                   </h3>
-                  <span className={`text-orange-500 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-45' : ''
-                  }`}>
-                    +
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/70 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
+                      click here
+                    </span>
+                    <span className={`text-orange-500 transition-all duration-300 group-hover:scale-125 group-hover:bg-white/10 group-hover:backdrop-blur-sm p-1 rounded-full ${
+                      openIndex === index ? 'rotate-45' : ''
+                    }`}>
+                      +
+                    </span>
+                  </div>
                 </div>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
