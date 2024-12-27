@@ -40,9 +40,46 @@ const accordionData = [
 
 export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const buttons = document.querySelectorAll('.accordion-button');
+    const circle = circleRef.current;
+
+    if (!circle) return;
+
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', (e) => {
+        const rect = (e.target as HTMLElement).getBoundingClientRect();
+        gsap.to(circle, {
+          opacity: 1,
+          scale: 1,
+          x: rect.left + rect.width - 50,
+          y: rect.top + rect.height/2 - 25,
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      });
+
+      button.addEventListener('mouseleave', () => {
+        gsap.to(circle, {
+          opacity: 0,
+          scale: 0.5,
+          duration: 0.3,
+          ease: "power2.in"
+        });
+      });
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white py-20">
+      <div 
+        ref={circleRef} 
+        className="fixed w-[50px] h-[50px] pointer-events-none opacity-0 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center text-xs font-medium z-50"
+      >
+        Click here
+      </div>
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-12 text-center">
           <p className="text-orange-500 text-sm uppercase tracking-wider mb-4">FAQ</p>
@@ -58,7 +95,7 @@ export default function Accordion() {
           {accordionData.map((item, index) => (
             <div key={index} className="border border-white/10 rounded-2xl overflow-hidden">
               <button
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                className="accordion-button w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors relative"
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
               >
                 <span className="text-lg font-medium">{item.title}</span>
