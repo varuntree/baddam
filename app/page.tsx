@@ -4,6 +4,7 @@ import Features from "./pages/Features";
 import HowWeWork from "./pages/HowWeWork";
 import Industries from "./pages/Industries";
 import AboutUs from "./pages/AboutUs";
+import People from "./pages/People";
 import Services from "./services/page";
 import Footer from "./components/Footer";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <HowWeWork />
       <Industries />
       <AboutUs />
+      <People />
       <Footer />
     </div>
   );
