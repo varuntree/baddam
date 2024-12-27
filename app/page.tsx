@@ -14,6 +14,7 @@ export default function Home() {
       <Features />
       <HowWeWork />
       <Industries />
+      <People />
       <AboutUs />
       <Footer />
     </div>
