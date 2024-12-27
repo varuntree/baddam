@@ -1,37 +1,41 @@
 
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useState } from 'react';
 
 export default function MouseFollower() {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-
-    const moveCursor = (e: MouseEvent) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.5,
-        ease: "power2.out"
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      setTargetPosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const animate = () => {
+      setPosition(prev => ({
+        x: prev.x + (targetPosition.x - prev.x) * 0.1,
+        y: prev.y + (targetPosition.y - prev.y) * 0.1
+      }));
+      requestAnimationFrame(animate);
+    };
+
+    const animationFrame = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrame);
     };
-  }, []);
+  }, [targetPosition]);
 
   return (
     <div 
-      ref={cursorRef}
-      className="fixed w-5 h-5 bg-orange-500 rounded-full pointer-events-none mix-blend-difference hidden md:block"
+      className="fixed w-8 h-8 bg-orange-500 rounded-full pointer-events-none mix-blend-difference"
       style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
         transform: 'translate(-50%, -50%)',
         zIndex: 9999,
       }}
