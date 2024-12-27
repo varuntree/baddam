@@ -141,10 +141,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Add Team Section */}
-        <TeamSection />
-        
-{/* Add Logo Scroll Section */}
+        {/* Add Logo Scroll Section */}
         <LogoScroll />
 
         {/* Call to Change Button */}
